@@ -18,6 +18,9 @@ public class Piatto {
 	private Long id;
 	
 	@NotBlank
+	private String nome;
+	
+	@NotBlank
 	private String origine;
 	
 	@NotBlank
@@ -31,6 +34,14 @@ public class Piatto {
 	private List<Ingredienti> ingredienti ;
 	
 	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	public Long getId() {
 		return id;
