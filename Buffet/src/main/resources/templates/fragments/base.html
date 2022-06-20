@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+<meta charset="UTF-8" />
+
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap"
+	rel="stylesheet">
+
+<link th:href="@{/static/css/my-style.css}" rel="stylesheet" />
+
+
+</head>
+<body>
+	<header class="font" th:fragment="intestazione">
+		<div class="header">
+			<div class="header_logo">
+				<span></span>
+			</div>
+			<div class="header_items">
+				<ul>
+
+					<div class="tasto">
+						<a th:href="@{/buffet}">Buffet</a>
+					</div>
+
+
+
+
+				</ul>
+
+			</div>
+		</div>
+	</header>
+
+	<footer th:fragment="footer">
+		<div class="footer_conteiner">
+			<div class="footer_colonne">
+				<div class="colonna">
+					<h4>Info</h4>
+					<ul>
+						<li><a href="https://sites.google.com/site/paolomerialdo/">Sito
+								Personale</a></li>
+						<li><a
+							href="https://www.uniroma3.it/persone/OUMrMWN2N2xIRC9wby95c1NXTEY0TTVKRndYWkwvR0pUWVhSQUJUMGs2VT0=/">Sito
+								Univerista</a></li>
+						<li><a
+							href="https://ingegneria.el.uniroma3.it/course/view.php?id=483">Moodle
+								Corso</a></li>
+						<li><a
+							href="http://asi.uniroma3.it/download/curriculum/1621524546Paolo%20Merialdo%20-%202021-05-14%20-%20EN.pdf">Curriculum
+								Vitea</a></li>
+					</ul>
+				</div>
+				<div class="colonna">
+					<h4>Orari Lezione</h4>
+					<ul>
+						<li><span>Lunedi 8:00 - 10:00</span></li>
+						<li><span>Martedi 8:00 - 10:00</span></li>
+						<li><span>Giovedi 8:00 - 10:00</span></li>
+						<li><span>Venerdi 8:00 - 10:00</span></li>
+					</ul>
+				</div>
+				<div class="colonna">
+					<h4>Contatti</h4>
+					<ul>
+						<li><span>Numero Telefono :0657333218</span></li>
+						<li><span>Email: paolo.merialdo@uniroma3.it</span></li>
+						<li><span>Numero Fax : 0657333211</span></li>
+						<li><span>Via della Vasca Navale, 79</span></li>
+					</ul>
+				</div>
+
+				<div class="colonna">
+					<h4>follow us</h4>
+					<div class="social-links">
+						<a href="https://www.facebook.com/paolo.merialdo"><i
+							class="fab fa-facebook-f"></i></a> <a href="#"><i
+							class="fab fa-twitter"></i></a> <a href="#"><i
+							class="fab fa-instagram"></i></a> <a
+							href="https://www.linkedin.com/in/paolomerialdo/?originalSubdomain=it"><i
+							class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

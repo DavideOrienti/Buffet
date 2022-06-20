@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Persone</title>
+</head>
+<body>
+	<div>
+		<h4>Elenco persone:</h4>
+		<ul>
+			<li th:each="buffet : ${buffets}"><a href="buffet.html"
+				th:href="@{'/buffet' + '/' + ${buffet.id}}"
+				th:text="|${buffet.nome} |">Paolo Rossi</a></li>
+		</ul>
+	</div>
+	<footer>
+		<a href="/">Home</a>
+	</footer>
+</body>
+</html>

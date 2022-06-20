@@ -14,13 +14,13 @@
 
 
 		<div>
-			nome:<input type="text" th:field="*{nome}" />
+			Nome:<input type="text" th:field="*{nome}" />
 			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 			
 		</div>
 		
 		<div>
-			eta:<input type="text" th:field="*{descrizione}" />
+			Descrizione:<input type="text" th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
 		<div>
