@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<title>Inserimento persona</title>
+</head>
+<body>
+	<form th:action="@{/buffet}" method="post" th:object="${buffet}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+		 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+		</div>
+
+
+		<div>
+			nome:<input type="text" th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			
+		</div>
+		
+		<div>
+			eta:<input type="text" th:field="*{descrizione}" />
+			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+		</div>
+		<div>
+			<button type="submit"> Conferma </button></div>
+
+	</form>

@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Piatto {
 	@ManyToMany(mappedBy = "piatti")
 	private List<Buffet> buffets;
 	
-	@ManyToMany(mappedBy = "piatti")
+	@ManyToMany(mappedBy = "piatti" , cascade = {CascadeType.PERSIST})
 	private List<Ingredienti> ingredienti ;
 	
 	

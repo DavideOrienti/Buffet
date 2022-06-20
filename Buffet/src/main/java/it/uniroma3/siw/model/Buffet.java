@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,12 +27,12 @@ public class Buffet {
 	@NotBlank
 	private String descrizione;
 	
-	@ManyToOne
+	@ManyToOne (cascade = {CascadeType.PERSIST})
 	private Chef chef;
 	
 	
 	
-	@ManyToMany
+	@ManyToMany (cascade = {CascadeType.PERSIST})
 	private List<Piatto> piatti;
 
 	public Long getId() {

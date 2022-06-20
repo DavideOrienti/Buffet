@@ -19,7 +19,7 @@ public class BuffetService {
 	
 	
 	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
-	public void savePersona (Buffet buffet) {
+	public void saveBuffet (Buffet buffet) {
 		br.save(buffet);		
 		
 		

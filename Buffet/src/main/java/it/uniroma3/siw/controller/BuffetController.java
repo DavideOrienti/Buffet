@@ -38,7 +38,7 @@ public class BuffetController {
 		bv.validate(buffet, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
 		if(!br.hasErrors())	{
-			bs.savePersona(buffet);
+			bs.saveBuffet(buffet);
 			model.addAttribute("buffet", model);
 			//model.addAttribute("buffet", this.bs.FindAll());
 			
