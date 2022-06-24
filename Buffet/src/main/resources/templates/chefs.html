@@ -19,14 +19,10 @@
 		</ul>
 	</div>
 	
-	<div th:if="${credentials}">
-        <div class="Aggiungi">
-		  <h5>
-            <a href="chefForm">Aggiungi Buffet</a>
-            </h5>
-            </div>
+		<div class="Admin" th:if=admin>
+		<a href="chefForm">Aggiungi Chef</a>
 
-           </div>
+	</div>
 	 <footer th:replace="fragments/base.html :: footer"></footer>
 </body>
 </html>

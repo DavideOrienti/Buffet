@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,7 @@ public class ChefController {
 	
 	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
 	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 
 	
@@ -40,40 +43,56 @@ public class ChefController {
 		public String addChef(@Valid @ModelAttribute("chef")Chef chef,BindingResult br,Model model) {
 		cv.validate(chef, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
+		model.addAttribute("login",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			cs.savePersona(chef);
-			model.addAttribute("chef", model);
-			//model.addAttribute("buffet", this.bs.FindAll());
+			//model.addAttribute("chef", model);
+			this.cs.savePersona(chef);
+			model.addAttribute("chefs", this.cs.FindAll());
 			
-//			if(AuthenticationController.admin) {
-//				model.addAttribute("credentials",AuthenticationController.admin);
-//			}
+			if(AuthenticationController.loggato) {
+				if(AuthenticationController.admin) {
+					model.addAttribute("credentials",AuthenticationController.admin);
+				}}
 			return "chefs.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
-		else return "chefForm.html";
+		
+		 return "chefForm.html";
 		
 	}
 
 //richiede tute le persone perche non specifico id
-	@GetMapping("/chef")
-	public String getChef(Model model) {
-		List<Chef> chef = cs.FindAll();
-		model.addAttribute("chef",chef);
+//	@GetMapping("/chef")
+//	public String getChef(Model model) {
+//		List<Chef> chef = cs.FindAll();
+//		model.addAttribute("chef",chef);
+//		return "chefs.html";	
+//	}
+@GetMapping("/chef")
+public String getBuffet(Model model) {
+	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("chefs", this.cs.FindAll());
+	if(AuthenticationController.loggato) {
+		if(AuthenticationController.admin) {	
+			model.addAttribute("credentials",AuthenticationController.admin);
+			
+		}}
 		return "chefs.html";
-		
-		
-	}
+	
+}
 	
 	
 	@GetMapping("/chef/{id}")
 	  public String getChef(@PathVariable("id") Long id, Model model) {
-	    model.addAttribute("chef", this.cs.FindById(id));
+		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("chef", this.cs.FindById(id));
 	    return "chef.html";
 
 }
 	@GetMapping("/chefForm")
 	public String geChef(Model model) {
 		model.addAttribute("chef", new Chef());
+		model.addAttribute("login",AuthenticationController.loggato);
 		return "chefForm.html";
 		
 	}

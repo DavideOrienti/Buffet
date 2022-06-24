@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ public class BuffetController {
 	@Autowired
 	private BuffetValidator bv;
 	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
 	@GetMapping("/")
     public String defaultMapping(Model model)
@@ -42,17 +46,19 @@ public class BuffetController {
 		public String addBuffet(@Valid @ModelAttribute("buffet")Buffet buffet,BindingResult br,Model model) {
 		bv.validate(buffet, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
+		model.addAttribute("login",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			bs.saveBuffet(buffet);
-			model.addAttribute("buffet", model);
-			//model.addAttribute("buffet", this.bs.FindAll());
-			
-//			if(AuthenticationController.admin) {
-//				model.addAttribute("credentials",AuthenticationController.admin);
-//			}
+			//model.addAttribute("buffet", model);
+			model.addAttribute("buffets", this.bs.FindAll());
+			if(AuthenticationController.loggato) {
+			if(AuthenticationController.admin) {
+				model.addAttribute("credentials",AuthenticationController.admin);
+			}}
 			return "buffets.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
-		else return "buffetForm.html";
+		
+	     return "buffetForm.html";
 		
 	}
 	
@@ -68,24 +74,40 @@ public class BuffetController {
 //	
 	
 	//richiede tute le persone perche non specifico id
+//	@GetMapping("/buffet")
+//	public String getBuffet(Model model) {
+//		List<Buffet> buffet = bs.FindAll();
+//		model.addAttribute("buffet",buffet);
+//		return "buffets.html";
+//		
+//		
+//	}
+	
 	@GetMapping("/buffet")
 	public String getBuffet(Model model) {
-		List<Buffet> buffet = bs.FindAll();
-		model.addAttribute("buffet",buffet);
-		return "buffets.html";
-		
+		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("buffets", this.bs.FindAll());
+		if(AuthenticationController.loggato) {
+			if(AuthenticationController.admin) {	
+				model.addAttribute("credentials",AuthenticationController.admin);
+				
+			}}
+			return "buffets.html";
 		
 	}
 	
 	@GetMapping("/buffet/{id}")
 	  public String getBuffet(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("login",AuthenticationController.loggato);
 	    model.addAttribute("buffet", this.bs.FindById(id));
 	    return "buffet.html";
 
 }
 	@GetMapping("/buffetForm")
 	public String geBuffet(Model model) {
+		logger.debug("buffetForm");
 		model.addAttribute("buffet", new Buffet());
+		model.addAttribute("login",AuthenticationController.loggato);
 		return "buffetForm.html";
 		
 	}

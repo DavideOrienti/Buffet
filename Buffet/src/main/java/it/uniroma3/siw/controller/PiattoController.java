@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,8 @@ public class PiattoController {
 	@Autowired
 	private PiattoValidator pv;
 	
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
 //	@GetMapping("/")
 //    public String defaultMapping(Model model)
@@ -44,36 +48,50 @@ public class PiattoController {
 		                              errori contro anche che non ci siano duplicati*/
 		if(!br.hasErrors())	{
 			ps.savePersona(piatto);
-			model.addAttribute("piatto", model);
-			//model.addAttribute("buffet", this.bs.FindAll());
+			//model.addAttribute("piatti", model);
+			model.addAttribute("piatti", this.ps.FindAll());
 			
-//			if(AuthenticationController.admin) {
-//				model.addAttribute("credentials",AuthenticationController.admin);
-//			}
-			return "index.html";  // se il problema non ha trovato errori torna alla pagina iniziale
+			if(AuthenticationController.loggato) {
+				if(AuthenticationController.admin) {
+					model.addAttribute("credentials",AuthenticationController.admin);
+				}}
+			return "piatti.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
 		else return "piattoForm.html";
 		
 	}
 
-//richiede tute le persone perche non specifico id
-	@GetMapping("/piatto")
-	public String getPiatto(Model model) {
-		List<Piatto> piatto = ps.FindAll();
-		model.addAttribute("piatto",piatto);
+////richiede tute le persone perche non specifico id
+//	@GetMapping("/piatto")
+//	public String getPiatto(Model model) {
+//		List<Piatto> piatto = ps.FindAll();
+//		model.addAttribute("piatto",piatto);
+//		return "piatti.html";
+//	}
+
+@GetMapping("/piatto")
+public String getBuffet(Model model) {
+	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("piatti", this.ps.FindAll());
+	if(AuthenticationController.loggato) {
+		if(AuthenticationController.admin) {	
+			model.addAttribute("credentials",AuthenticationController.admin);
+			
+		}}
 		return "piatti.html";
-		
-		
-	}
+	
+}
 	
 	@GetMapping("/piatto/{id}")
 	  public String getPiatto(@PathVariable("id") Long id, Model model) {
 	    model.addAttribute("piatto", this.ps.FindById(id));
+	    model.addAttribute("login",AuthenticationController.loggato);
 	    return "piatto.html";
 
 }
 	@GetMapping("/piattoForm")
 	public String gePiatto(Model model) {
+		model.addAttribute("login",AuthenticationController.loggato);
 		model.addAttribute("piatto", new Piatto());
 		return "piattoForm.html";
 		

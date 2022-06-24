@@ -30,6 +30,10 @@ public class Credentials {
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
+	public Credentials(String role) {
+		this.role = role; 
+	}
+
 	public Credentials() {
 		// TODO Auto-generated constructor stub
 	}

@@ -11,7 +11,7 @@
 		<h4>Elenco persone:</h4>
 		<ul>
 			<li th:each="ingrediente : ${ingredienti}"><a href="ingrediente.html"
-				th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+				th:href="@{'/ingrediente' + '/' + ${ingrediente.nome}}"
 				th:text="|${ingrediente.nome} |">Buffet </a></li>
 		</ul>
 	</div>

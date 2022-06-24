@@ -3,6 +3,7 @@
  <head th:fragment="headerfiles(title)">
 
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/index.css}" rel="stylesheet" />
 
 
 <title>Museo</title>
@@ -12,39 +13,20 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
 
 	<h2>Operazioni</h2>
-
-	<div>
-		<a th:href="@{/buffetForm}">Aggiungi Buffet</a>
-	</div>
-
-	<div>
-		<a th:href="@{/buffet}">Lista Persona</a>
-	</div>
-
 	
-	<div>
-		<a th:href="@{/piattoForm}">Aggiungi piatto</a>
-	</div>
+		<div class="select">
+		
+		<div class="buffet">
+			<a href="buffet">
+				<div class="scritte">Buffet</div>
+			</a>
+		</div> </div>
 
-	<div>
-		<a th:href="@{/piatto}">Lista piatti</a>
-	</div>
-	
-	<div>
-		<a th:href="@{/chefForm}">Aggiungi chef</a>
-	</div>
 
-	<div>
-		<a th:href="@{/chef}">Lista chefs</a>
-	</div>
-	
-	<div>
-		<a th:href="@{/ingredienteForm}">Aggiungi ingrediente</a>
-	</div>
 
-	<div>
-		<a th:href="@{/ingrediente}">Lista ingredienti</a>
-	</div>
+
+		
+
 
 	
 <footer th:replace="fragments/base.html :: footer"></footer>

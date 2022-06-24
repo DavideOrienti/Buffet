@@ -1,0 +1,41 @@
+
+.titolo {
+	width: 100%;
+	text-align: center;
+	margin-top: 4%;
+	font-size: 50px;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	color: white;
+}
+
+.select{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 40%;
+	
+}
+
+
+
+.scritte{
+	margin-top: 20%;
+	}
+
+
+
+.buffet {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+    no-repeat left/cover url(/images/Listafilm.jpg);
+	text-align: center;
+	width:30%;
+	border-radius:30px;
+	box-shadow:red;
+	height: 250px;
+	margin-top: 5%;
+	font-size: 30px;
+}
+
+.titoloContenitore {
+	width: 95%;
+}

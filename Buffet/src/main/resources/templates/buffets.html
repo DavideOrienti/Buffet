@@ -9,13 +9,22 @@
     <header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
 		<h4>Elenco persone:</h4>
-		<ul>
-			<li th:each="buffet : ${buffets}"><a href="buffet.html"
+		
+		<div class="punto">
+				<li th:each="buffet : ${buffets}"><a href="buffet.html"
+					th:href="@{'/buffet' + '/' + ${buffet.id}}" th:text="|${buffet.nome} |">Buffetefefef
+				</a></li>
+			</div>
+		
+		
+		
+		
+		<!--  	<li th:each="buffet : ${buffets}"><a href="buffet.html"
 				th:href="@{'/buffet'+'/'+${buffet.id}}"
 				th:text="|${buffet.nome} |">Buffet </a></li>
 		</ul>
 		
-	<!-- 	 <ul style="margin-right: 2%;">
+		 <ul style="margin-right: 2%;">
             <li style="margin-top: 25px;" th:each="artista : ${artisti}">
                 <a href="artista.html" 
                    th:href="@{'/artista' + '/' + ${artista.id}}" ><span class="el-lista"  th:text="|${artista.nome} ${artista.cognome}|">Paolo Rossi</span></a>
@@ -23,16 +32,30 @@
         </ul>
 		 -->	
 	</div>
-	
-	
-	<div th:if="${credentials}">
-        <div class="Aggiungi">
-		  <h5>
-            <a href="buffetForm">Aggiungi Buffet</a>
-            </h5>
-            </div>
 
-           </div>
-	 <footer th:replace="fragments/base.html :: footer"></footer>
+
+	<div class="aggiungi" th:if="${credentials}" >
+		<div class="Aggiungi">
+			<h5>
+				<a href="buffetForm">Aggiungi Buffet</a>
+			</h5>
+		</div>
+
+	</div>
+
+	<div class="tasto">
+		<a th:href="@{/buffetForm}" th:if="${credentials}">Buffet Form</a>
+
+	</div>
+		<div class="tasto">
+		<a th:if="${credentials}">Buffet Form</a>
+
+	</div>
+	
+
+	
+	
+</div>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 </body>
 </html>
