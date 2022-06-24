@@ -27,6 +27,10 @@ public class Piatto {
 	@NotBlank
 	private String descrizione;
 	
+	public Piatto() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	@ManyToMany(mappedBy = "piatti")
 	private List<Buffet> buffets;

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
+
+<title>Inserimento persona</title>
+</head>
+<body>
+
+<header th:replace="fragments/base.html :: intestazione"></header>
+
+	<form th:action="@{/chef}" method="post" th:object="${chef}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+		 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+		</div>
+
+
+		<div>
+			Nome:<input type="text" th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			
+		</div>
+		
+		<div>
+			Nazionalita:<input type="text" th:field="*{cognome}" />
+			<div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></div>
+			
+		</div>
+		
+		<div>
+			Nazionalita:<input type="text" th:field="*{nazionalita}" />
+			<div th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></div>
+		</div>
+		<div>
+			<button type="submit"> Conferma </button></div>
+
+	</form>
+	
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</body>
+	</html>

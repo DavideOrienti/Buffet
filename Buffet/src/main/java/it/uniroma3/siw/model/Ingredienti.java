@@ -25,6 +25,10 @@ public class Ingredienti {
 	
 	@ManyToMany
 	private List<Piatto> piatti ;
+	
+	public Ingredienti() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public String getNome() {
 		return nome;

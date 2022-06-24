@@ -50,7 +50,7 @@ public class BuffetController {
 //			if(AuthenticationController.admin) {
 //				model.addAttribute("credentials",AuthenticationController.admin);
 //			}
-			return "index.html";  // se il problema non ha trovato errori torna alla pagina iniziale
+			return "buffets.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
 		else return "buffetForm.html";
 		

@@ -1,20 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
 <title>Persone</title>
 </head>
 <body>
+    <header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
 		<h4>Elenco persone:</h4>
 		<ul>
 			<li th:each="buffet : ${buffets}"><a href="buffet.html"
-				th:href="@{'/buffet' + '/' + ${buffet.id}}"
-				th:text="|${buffet.nome} |">Paolo Rossi</a></li>
+				th:href="@{'/buffet'+'/'+${buffet.id}}"
+				th:text="|${buffet.nome} |">Buffet </a></li>
 		</ul>
+		
+	<!-- 	 <ul style="margin-right: 2%;">
+            <li style="margin-top: 25px;" th:each="artista : ${artisti}">
+                <a href="artista.html" 
+                   th:href="@{'/artista' + '/' + ${artista.id}}" ><span class="el-lista"  th:text="|${artista.nome} ${artista.cognome}|">Paolo Rossi</span></a>
+            </li>
+        </ul>
+		 -->	
 	</div>
-	<footer>
-		<a href="/">Home</a>
-	</footer>
+	
+	
+	<div th:if="${credentials}">
+        <div class="Aggiungi">
+		  <h5>
+            <a href="buffetForm">Aggiungi Buffet</a>
+            </h5>
+            </div>
+
+           </div>
+	 <footer th:replace="fragments/base.html :: footer"></footer>
 </body>
 </html>

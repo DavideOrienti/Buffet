@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+ <head th:fragment="headerfiles(title)">
 
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
 
 
 <title>Museo</title>
-
+</head>
 <body>
 
 	<header th:replace="fragments/base.html :: intestazione"></header>
@@ -21,11 +21,35 @@
 		<a th:href="@{/buffet}">Lista Persona</a>
 	</div>
 
+	
 	<div>
-		<a th:href="@{/buffets}">Lista Persona</a>
+		<a th:href="@{/piattoForm}">Aggiungi piatto</a>
 	</div>
 
-	<footer th:replace="fragments/base.html :: footer"></footer>
+	<div>
+		<a th:href="@{/piatto}">Lista piatti</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/chefForm}">Aggiungi chef</a>
+	</div>
+
+	<div>
+		<a th:href="@{/chef}">Lista chefs</a>
+	</div>
+	
+	<div>
+		<a th:href="@{/ingredienteForm}">Aggiungi ingrediente</a>
+	</div>
+
+	<div>
+		<a th:href="@{/ingrediente}">Lista ingredienti</a>
+	</div>
+
+	
+<footer th:replace="fragments/base.html :: footer"></footer>
 
 </body>
+
+
 </html>

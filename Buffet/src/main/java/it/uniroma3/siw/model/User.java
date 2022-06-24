@@ -16,6 +16,10 @@ public class User {
 	private String nome;
 	private String cognome;
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,6 +31,8 @@ public class User {
 	public String getNome() {
 		return this.nome;
 	}
+	
+	
 	
 
 	

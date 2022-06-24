@@ -29,6 +29,10 @@ public class Credentials {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
+	
+	public Credentials() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;

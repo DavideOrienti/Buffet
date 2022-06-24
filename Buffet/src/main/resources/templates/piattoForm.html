@@ -10,8 +10,7 @@
 
 <header th:replace="fragments/base.html :: intestazione"></header>
 
-	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
-	
+	<form th:action="@{/piatto}" method="post" th:object="${piatto}">
 
 		<div th:if="${#fields.hasGlobalErrors()}">
 		 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
@@ -25,29 +24,15 @@
 		</div>
 		
 		<div>
+			Origine:<input type="text" th:field="*{origine}" />
+			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
+			
+		</div>
+		
+		<div>
 			Descrizione:<input type="text" th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
-		
-			<div>
-				<!--   <select name="chef" roleId="chef" id="chef" th:field="*{chef}">
-					<option value=" "></option>
-					<option th:each="chef : ${chefs}" th:value="${chef.id}"
-						th:text="${chef.nome}+${chef.cognome}"></option>
-
-				</select>
-				
-				<select name="chef" roleId="chef" id="chef"
-					th:field="*{chef}">
-					<option value=" ">Curatore</option>
-					<option th:each="chef: ${chefs}"
-						th:value="${chef.id}"
-						th:text="${chef.nome}"></option>
-
-				</select>
-				-->
-			</div>
-		
 		<div>
 			<button type="submit"> Conferma </button></div>
 

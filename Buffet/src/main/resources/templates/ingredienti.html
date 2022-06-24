@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<title>Persone</title>
+</head>
+<body>
+    <header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+		<h4>Elenco persone:</h4>
+		<ul>
+			<li th:each="ingrediente : ${ingredienti}"><a href="ingrediente.html"
+				th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+				th:text="|${ingrediente.nome} |">Buffet </a></li>
+		</ul>
+	</div>
+	
+	<div th:if="${credentials}">
+        <div class="Aggiungi">
+		  <h5>
+            <a href="ingredienteForm">Aggiungi Buffet</a>
+            </h5>
+            </div>
+
+           </div>
+	 <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

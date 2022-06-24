@@ -10,14 +10,14 @@
 
 <header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		   
 		<h4>Dettagli persona</h4>
-		<h4 th:text="#{header.buffet}">...</h4>
+		
 		
 		
 		<div>
-			<span th:text="${buffet.nome}">Paolo</span>
-			<span th:text="${buffet.descrizione}">Rossi</span>
+			<span th:text="${chef.nome}">Paolo</span>
+			<span th:text="${chef.cognome}">Rossi</span>
+			<span th:text="${chef.nazionalita}">Rossi</span>
 			
 		</div>
 		

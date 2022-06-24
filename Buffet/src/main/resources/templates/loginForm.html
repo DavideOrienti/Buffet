@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
+
+ <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div class="posizione">
+	<div>
+		<h4>Login</h4>
+	</div>
+	<form th:action="@{/login}" method="POST">
+		<div>
+			<div>
+				<span>Username:</span>
+				<span><input name="username" type="text" required /></span>
+			</div>		
+			<div>
+				<span>Password:</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span><button type="submit">Login</button></span>
+			</div>
+			<h2>oppure</h2>
+			<div>
+            <a th:href="register">Registrati</a>
+           </div>
+			
+		</div>
+		
+		<div class="spazio">
+		</div>
+	</form>
+	</div>
+    <footer th:replace="fragments/base.html :: footer(home='/')"></footer>
+</body>
+</html>

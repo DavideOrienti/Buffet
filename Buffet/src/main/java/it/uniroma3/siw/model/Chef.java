@@ -29,6 +29,10 @@ public class Chef {
 	
 	@OneToMany(mappedBy = "chef")
 	private List<Buffet> buffets;
+	
+	public Chef() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;

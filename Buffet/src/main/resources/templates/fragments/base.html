@@ -8,7 +8,7 @@
 	href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap"
 	rel="stylesheet">
 
-<link th:href="@{/static/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
 
 
 </head>
@@ -16,13 +16,24 @@
 	<header class="font" th:fragment="intestazione">
 		<div class="header">
 			<div class="header_logo">
-				<span></span>
+				<a th:href="@{/}">Home</a>
+				
 			</div>
 			<div class="header_items">
 				<ul>
 
 					<div class="tasto">
 						<a th:href="@{/buffet}">Buffet</a>
+					</div>
+
+					<div class="tasto">
+						<a th:href="@{/chef}">Chef</a>
+					</div>
+
+					<div class="tasto">
+						<a th:href="@{/login}" th:if="!${login}">Accedi</a> <a
+							th:href="@{/logout}" th:if="${login}">Logout</a>
+
 					</div>
 
 
@@ -35,6 +46,7 @@
 	</header>
 
 	<footer th:fragment="footer">
+
 		<div class="footer_conteiner">
 			<div class="footer_colonne">
 				<div class="colonna">

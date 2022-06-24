@@ -34,6 +34,10 @@ public class Buffet {
 	
 	@ManyToMany (cascade = {CascadeType.PERSIST})
 	private List<Piatto> piatti;
+	
+	public Buffet() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;
