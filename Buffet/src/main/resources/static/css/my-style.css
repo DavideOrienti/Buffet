@@ -4,8 +4,33 @@ body {
   font-family: Poppins;
 
   
-  
 }
+
+
+
+.foto{
+	height:600px;
+	display:flex;
+	align-items:center;
+	width:100%;
+	 margin: 0; 
+	 position: static;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+    no-repeat left/cover url(/images/buffet.jpg);
+    background-size: cover;
+}
+
+.Nome{
+	display: flex;
+	margin-top:-300px;
+	margin-left: 40px;
+	color:white;
+	font-size: 30px;
+}
+
+  
+  
+
 
 * {
   margin: 0;
@@ -19,7 +44,7 @@ body {
   background-color: #101010;
 }
 .header_logo {
-  width: 30%;
+  width: 10%;
   color: white;
   display: flex;
   align-items: center;
@@ -31,12 +56,15 @@ body {
 	margin: 10px;
 }
 .header_items {
-  width: 70%;
+  width: 90%;
  
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 3%;
+  padding-right: 2%;
+}
+.tasto{
+	display: inline-flex;
 }
 
 .header_items a {
@@ -64,7 +92,7 @@ footer{
 
   margin-top :100%;
   padding: 70px 0;
-  max-width: 1170px;
+  max-width: 100%x;
   padding-left: 10%;
   background-color: #24262b;
 	

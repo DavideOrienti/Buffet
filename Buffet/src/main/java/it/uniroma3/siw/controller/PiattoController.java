@@ -50,6 +50,7 @@ public class PiattoController {
 			ps.savePersona(piatto);
 			//model.addAttribute("piatti", model);
 			model.addAttribute("piatti", this.ps.FindAll());
+		
 			
 			if(AuthenticationController.loggato) {
 				if(AuthenticationController.admin) {
@@ -70,9 +71,10 @@ public class PiattoController {
 //	}
 
 @GetMapping("/piatto")
-public String getBuffet(Model model) {
+public String getBuffet(Model model,Piatto piatto) {
 	model.addAttribute("login",AuthenticationController.loggato);
 	model.addAttribute("piatti", this.ps.FindAll());
+	
 	if(AuthenticationController.loggato) {
 		if(AuthenticationController.admin) {	
 			model.addAttribute("credentials",AuthenticationController.admin);
@@ -93,6 +95,7 @@ public String getBuffet(Model model) {
 	public String gePiatto(Model model) {
 		model.addAttribute("login",AuthenticationController.loggato);
 		model.addAttribute("piatto", new Piatto());
+		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
 		return "piattoForm.html";
 		
 	}

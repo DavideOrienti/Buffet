@@ -51,6 +51,8 @@ public class BuffetController {
 			bs.saveBuffet(buffet);
 			//model.addAttribute("buffet", model);
 			model.addAttribute("buffets", this.bs.FindAll());
+			
+			
 			if(AuthenticationController.loggato) {
 			if(AuthenticationController.admin) {
 				model.addAttribute("credentials",AuthenticationController.admin);
@@ -84,9 +86,10 @@ public class BuffetController {
 //	}
 	
 	@GetMapping("/buffet")
-	public String getBuffet(Model model) {
+	public String getBuffet(Model model,Buffet buffet) {
 		model.addAttribute("login",AuthenticationController.loggato);
 		model.addAttribute("buffets", this.bs.FindAll());
+		
 		if(AuthenticationController.loggato) {
 			if(AuthenticationController.admin) {	
 				model.addAttribute("credentials",AuthenticationController.admin);
@@ -107,6 +110,7 @@ public class BuffetController {
 	public String geBuffet(Model model) {
 		logger.debug("buffetForm");
 		model.addAttribute("buffet", new Buffet());
+		model.addAttribute("chefs", this.bs.getChefService().FindAll());
 		model.addAttribute("login",AuthenticationController.loggato);
 		return "buffetForm.html";
 		

@@ -25,12 +25,12 @@ public class IngredientiService {
 		
 		
 	}
-	
+	@Transactional
 	public Ingredienti FindById(Long id) {
 	
 	  return ir.findById(id).get();  // senza get non mi ritornava una persona ma un messaggio java optional
 	}
-	
+	@Transactional
 	public List<Ingredienti> FindAll(){
 		/* attenzine il metodo pr.findAll() non ritorna un alista ma un iteratore quindi
 		 * devo far un modo di copiare ogni valore in un lista che poi faccio ritornare
@@ -43,7 +43,7 @@ public class IngredientiService {
 		}
 		return persone;
 	}
-	
+	@Transactional
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Ingredienti ing) {
 		return ir.existsByNome(ing.getNome());

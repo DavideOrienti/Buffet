@@ -107,5 +107,14 @@ public String getBuffet(Model model) {
 		return "chefForm.html";
 	}
 	
+//	@GetMapping("/buffet/addChef")
+//	public String addOpera(Model model) {
+//		logger.debug("addOChef");
+//		model.addAttribute("chef", new Chef());
+//		
+//		//model.addAttribute("login",AuthenticationController.loggato);
+//		return "operaForm.html";
+//	}
+	
 
 }

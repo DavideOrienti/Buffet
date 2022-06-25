@@ -7,6 +7,12 @@
 
 }
 
-span{
-	font-size: 60px; 
+.titolo {
+  display: flex;
+  height: 200px;
+  align-items: center;
+}
+
+h1{
+	text-align: center;
 }

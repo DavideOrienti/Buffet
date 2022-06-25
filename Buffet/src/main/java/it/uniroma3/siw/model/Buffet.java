@@ -32,7 +32,7 @@ public class Buffet {
 	
 	
 	
-	@ManyToMany (cascade = {CascadeType.PERSIST})
+	@OneToMany (mappedBy = "buffet", cascade = {CascadeType.PERSIST})
 	private List<Piatto> piatti;
 	
 	public Buffet() {
@@ -62,6 +62,24 @@ public class Buffet {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
+	public Chef getChef() {
+		return chef;
+	}
+
+	public void setChef(Chef chef) {
+		this.chef = chef;
+	}
+
+	public List<Piatto> getPiatti() {
+		return piatti;
+	}
+
+	public void setPiatti(List<Piatto> piatti) {
+		this.piatti = piatti;
+	}
+	
+	
 	
 	
 	

@@ -3,6 +3,7 @@
  <head th:fragment="headerfiles(title)">
 
   <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+  <link th:href="@{/css/chef.css}" rel="stylesheet" />
 
 <title th:text="${title}">Buffet</title>
 </head>
@@ -10,16 +11,18 @@
 
 <header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4>Dettagli persona</h4>
+		
 		
 		
 		
 		<div>
-			<span th:text="${chef.nome}">Paolo</span>
-			<span th:text="${chef.cognome}">Rossi</span>
-			<span th:text="${chef.nazionalita}">Rossi</span>
+			<h1 th:text="${chef.nome}">Paolo</h1>
+			<h1 th:text="${chef.cognome}">Rossi</h1>
+			<h2 th:text="${chef.nazionalita}">Rossi</h2>
 			
 		</div>
+		
+		
 		
 		
 	</div>

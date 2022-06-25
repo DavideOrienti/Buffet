@@ -26,12 +26,12 @@ public class ChefService {
 		
 		
 	}
-	
+	@Transactional
 	public Chef FindById(Long id) {
 	
 	  return cr.findById(id).get();  // senza get non mi ritornava una persona ma un messaggio java optional
 	}
-	
+	@Transactional
 	public List<Chef> FindAll(){
 		/* attenzine il metodo pr.findAll() non ritorna un alista ma un iteratore quindi
 		 * devo far un modo di copiare ogni valore in un lista che poi faccio ritornare

@@ -11,14 +11,21 @@
 		<ul>
 			<li th:each="piatto : ${piatti}"><a href="piatto.html"
 				th:href="@{'/piatto' + '/' + ${piatto.id}}"
-				th:text="|${piatto.nome} |">Buffet </a></li>
+				th:text="|${piatto.nome}   ${piatto.buffet.nome} |">Buffet </a></li>
 		</ul>
 	</div>
 	
-		<div class="Admin" th:if=admin>
-		<a href="piattoForm">Aggiungi Piatto</a>
+	
+	
+		<div th:if="${credentials}">
+        <div class="Aggiungi">
+		  <h5>
+            <a href="piattiForm">Aggiungi Piatto</a>
+            </h5>
+            </div>
 
-	</div>
+           </div>
+           
 	 <footer th:replace="fragments/base.html :: footer"></footer>
 </body>
 </html>

@@ -33,6 +33,18 @@
 			Descrizione:<input type="text" th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
+		
+		<div>
+				<select name="buffet" roleId="buffet" id="buffet"
+					th:field="*{buffet}">
+					<option value=" ">Buffet</option>
+					<option th:each="buffet : ${buffets}"
+						th:value="${buffet.id}"
+						th:text="${buffet.nome}"></option>
+
+				</select>
+			</div>
+		
 		<div>
 			<button type="submit"> Conferma </button></div>
 

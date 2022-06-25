@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -32,8 +33,10 @@ public class Piatto {
 	}
 	
 	
-	@ManyToMany(mappedBy = "piatti")
-	private List<Buffet> buffets;
+	@ManyToOne 
+	private Buffet buffet;
+	
+	
 	
 	@ManyToMany(mappedBy = "piatti" , cascade = {CascadeType.PERSIST})
 	private List<Ingredienti> ingredienti ;
@@ -71,6 +74,26 @@ public class Piatto {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
+	
+
+	public Buffet getBuffet() {
+		return buffet;
+	}
+
+	public void setBuffet(Buffet buffet) {
+		this.buffet = buffet;
+	}
+
+	public List<Ingredienti> getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(List<Ingredienti> ingredienti) {
+		this.ingredienti = ingredienti;
+	}
+	
+	
 	
 	
 

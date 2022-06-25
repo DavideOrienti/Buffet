@@ -29,24 +29,18 @@
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
 		
-			<div>
-				<!--   <select name="chef" roleId="chef" id="chef" th:field="*{chef}">
-					<option value=" "></option>
-					<option th:each="chef : ${chefs}" th:value="${chef.id}"
-						th:text="${chef.nome}+${chef.cognome}"></option>
-
-				</select>
-				
+		<div>
 				<select name="chef" roleId="chef" id="chef"
 					th:field="*{chef}">
-					<option value=" ">Curatore</option>
-					<option th:each="chef: ${chefs}"
+					<option value=" ">Chef</option>
+					<option th:each="chef : ${chefs}"
 						th:value="${chef.id}"
 						th:text="${chef.nome}"></option>
 
 				</select>
-				-->
 			</div>
+		
+		
 		
 		<div>
 			<button type="submit"> Conferma </button></div>

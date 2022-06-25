@@ -2,3 +2,20 @@
 	background-color: green;
 	height: 700px;
 }
+.lista{
+	
+	
+	margin: 50px;
+	display:flex;
+	align-items: center;
+	text-align: center;
+	text-decoration: none;
+}
+.punto{
+	padding:50px;
+}
+h1{
+	text-align: center;
+	margin-top:50px;
+	
+}
