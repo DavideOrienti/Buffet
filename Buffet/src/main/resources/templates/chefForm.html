@@ -33,6 +33,12 @@
 			Nazionalita:<input type="text" th:field="*{nazionalita}" />
 			<div th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></div>
 		</div>
+		
+		<div>
+					Immagine <input type="text" name="immagine" th:field="*{immagine}" required />
+					<span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+				</div>
+				
 		<div>
 			<button type="submit"> Conferma </button></div>
 

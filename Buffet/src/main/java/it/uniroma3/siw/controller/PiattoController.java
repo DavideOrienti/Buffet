@@ -50,7 +50,10 @@ public class PiattoController {
 			ps.savePersona(piatto);
 			//model.addAttribute("piatti", model);
 			model.addAttribute("piatti", this.ps.FindAll());
-		
+			
+			//model.addAttribute("listaIngredienti" ,this.ps.FindAllIngredientiById(id));
+			//model.addAttribute("listaIngredienti" ,this.ps.FindIngredienti());
+			
 			
 			if(AuthenticationController.loggato) {
 				if(AuthenticationController.admin) {
@@ -74,7 +77,8 @@ public class PiattoController {
 public String getBuffet(Model model,Piatto piatto) {
 	model.addAttribute("login",AuthenticationController.loggato);
 	model.addAttribute("piatti", this.ps.FindAll());
-	
+	//model.addAttribute("listaIngredienti" ,this.ps.FindAllIngredientiById(id));
+	//model.addAttribute("listaIngredienti" ,this.ps.FindIngredienti());
 	if(AuthenticationController.loggato) {
 		if(AuthenticationController.admin) {	
 			model.addAttribute("credentials",AuthenticationController.admin);

@@ -3,25 +3,59 @@
  <head th:fragment="headerfiles(title)">
 
   <link th:href="@{/css/my-style.css}" rel="stylesheet" />
-  <link th:href="@{/css/chef.css}" rel="stylesheet" />
+  <link th:href="@{/css/piatto.css}" rel="stylesheet" />
 
 <title th:text="${title}">Buffet</title>
 </head>
 <body>
 
 <header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
+	<div class="blocco">
 		
+	
+		<div class="immagine">
+      <img th:src="${piatto.immagine}" height="500" width="auto">
+      </div>
 		
-		
-		
-		<div>
-			<h1 th:text="${piatto.nome}">Paolo</h1>
-			<h1 th:text="${piatto.origine}">Rossi</h1>
-			<h2 th:text="${piatto.descrizione}">Rossi</h2>
-			<h2 th:text="${piatto.buffet.nome}">Rossi</h2>
+		<div class="testo">
+			<div class=nome>
+			<h1>Nome Piatto:</h1>
 			
+				<h1 th:text="${piatto.nome}">Paolo</h1>
+			</div>
+			<div class="origine">
+			<h2>Origine:</h2>
+				<h2 th:text="${piatto.origine}">Rossi</h2>
+			</div>
+			
+			<div class="buffet">
+			<h2>Si trova nel Buffet Chiamato:</h2>
+				<h2 th:text="${piatto.buffet.nome}">Rossi</h2>
+			</div>
+			
+			<div class="descrizione">
+			<h3>Descrizione:</h3>
+				<h3 th:text="${piatto.descrizione}">Rossi</h3>
+			</div>
 		</div>
+		
+		<div class="lista">
+				<li th:each="ingredienti : ${listaIngredienti}"><a href="ingrediente.html"
+					th:href="@{'/ingredienti' + '/' + ${ingredienti.nome}}" th:text="|${ingredienti.nome} |">Buffetefefef
+				</a></li>
+			</div>
+			
+			 
+          <div th:if="${credentials}">
+        <div class="Aggiungi">
+		  <h5>
+            <a href="ingredienteForm">Aggiungi Piatto</a>
+            </h5>
+            </div>
+
+           </div>
+		
+		
 		
 		
 		

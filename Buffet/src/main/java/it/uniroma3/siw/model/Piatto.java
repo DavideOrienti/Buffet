@@ -28,6 +28,9 @@ public class Piatto {
 	@NotBlank
 	private String descrizione;
 	
+	@NotBlank
+	private String immagine;
+	
 	public Piatto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -92,6 +95,16 @@ public class Piatto {
 	public void setIngredienti(List<Ingredienti> ingredienti) {
 		this.ingredienti = ingredienti;
 	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+	
+	
 	
 	
 	

@@ -24,7 +24,7 @@
 		</div>
 
 			<div>
-			Nome:<input type="text" th:field="*{origine}" />
+			Origine:<input type="text" th:field="*{origine}" />
 			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
 			
 		</div>
@@ -33,6 +33,17 @@
 			Descrizione:<input type="text" th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
+		
+		<div>
+				<select name="piatti" roleId="piatti" id="piatti"
+					th:field="*{piatti}">
+					<option value=" ">Buffet</option>
+					<option th:each="piatti : ${listapiatti}"
+						th:value="${piatti.id}"
+						th:text="${piatti.nome}"></option>
+
+				</select>
+			</div>
 		
 			
 		

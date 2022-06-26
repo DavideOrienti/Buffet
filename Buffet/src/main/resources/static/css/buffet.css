@@ -1,11 +1,33 @@
+body {
+	
+  margin: 0;
+  
+   position: static;
+  background: linear-gradient(rgba(100,100,100, 0.6), rgba(0, 0, 0, 0.3)),
+    no-repeat left/cover url(/images/sfondoBuffet.jpg)  ;
+     color: white;
+     background-size: cover;
+}
+
 .descrizione {
-	margin-top:100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align:justify;
+	margin-top:80px;
+	display: flex;
+	margin-left: 50px;
+ 
+ 
 
 }
+.chef{
+	display: flex;
+	justify-content: center;
+	
+	
+}
+.nomeChef{
+	
+	margin-left: 10px;
+	}
+
 
 .titolo {
   display: flex;
@@ -15,4 +37,39 @@
 
 h1{
 	text-align: center;
+	font-size: 150px;
+}
+h2{
+	text-align: left;
+}
+
+li a{
+	color: white;
+}
+
+.punto{
+	
+	display:flex;
+	width: 350px;
+	height: 70px;
+	margin:40px;
+	
+	justify-content:center;
+	
+	background-color: grey;
+	border-radius: 6px;
+	box-shadow: inset 0 0 0 0 black;
+	transition:ease-out 0.4s;
+	
+	
+	
+
+}
+
+.punto:hover {
+	font-size:35px;
+	box-shadow: inset 350px 0 0 0 black;
+	cursor:pointer;
+	color:black;
+	
 }

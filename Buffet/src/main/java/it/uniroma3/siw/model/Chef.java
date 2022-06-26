@@ -27,6 +27,9 @@ public class Chef {
 	@NotBlank
 	private String nazionalita;
 	
+	@NotBlank
+	private String immagine;
+	
 	@OneToMany(mappedBy = "chef")
 	private List<Buffet> buffets;
 	
@@ -65,6 +68,16 @@ public class Chef {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+	
+	
 	
 	
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Ingredienti;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.repository.IngredientiRepository;
 
 
@@ -17,6 +18,9 @@ public class IngredientiService {
 	
 	@Autowired  // autocarichi
 	private IngredientiRepository ir;
+	
+	@Autowired  // autocarichi
+	private PiattoService  ps;
 	
 	
 	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
@@ -48,6 +52,14 @@ public class IngredientiService {
 	public boolean alreadyExist(Ingredienti ing) {
 		return ir.existsByNome(ing.getNome());
 	}
+	public PiattoService getPs() {
+		return ps;
+	}
+	public void setPs(PiattoService ps) {
+		this.ps = ps;
+	}
+	
+	
 
 
 

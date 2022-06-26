@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.repository.BuffetRepository;
 
@@ -21,7 +22,9 @@ public class BuffetService {
 	@Autowired
 	private ChefService cs;
 	
-	
+//	@Autowired
+//	private PiattoService ps;
+//	
 	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
 	public void saveBuffet (Buffet buffet) {
 		br.save(buffet);		
@@ -49,6 +52,8 @@ public class BuffetService {
 	
 	
 	
+	
+	
 	@Transactional
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Buffet buffet) {
@@ -58,6 +63,12 @@ public class BuffetService {
 	public ChefService getChefService() {
 		return cs;
 	}
+	
+	
+	
+//	public PiattoService getPiattoService() {
+//		return ps;
+//	}
 
 	
 

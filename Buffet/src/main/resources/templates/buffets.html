@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/buffets.css}" rel="stylesheet" />
 <title>Persone</title>
 </head>
 <body>
@@ -11,8 +12,9 @@
 	<div class="titolo">
 		<h1>Tutti i Buffet disponibili</h1>
 	</div>	
-		<div class="punto">
-				<li th:each="buffet : ${buffets}"><a href="buffet.html"
+	
+		<div class="elenco">
+				<li class= "punto" th:each="buffet : ${buffets}"><a href="buffet.html"
 					th:href="@{'/buffet' + '/' + ${buffet.id}}" th:text="|${buffet.nome} |">Buffetefefef
 				</a></li>
 			</div>
@@ -23,6 +25,7 @@
 		
 	</div>
 
+<div class="bottoni">
   <div th:if="${credentials}">
         <div class="Aggiungi">
 		  <h5>
@@ -40,7 +43,7 @@
             </div>
 
            </div>
-         
+        </div> 
 
 
 

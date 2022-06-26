@@ -53,6 +53,16 @@ public class Ingredienti {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
+	public List<Piatto> getPiatti() {
+		return piatti;
+	}
+
+	public void setPiatti(List<Piatto> piatti) {
+		this.piatti = piatti;
+	}
+	
+	
 	
 	
 	

@@ -16,45 +16,30 @@
 		
 		
 		
-		 <div class="descrizione">
+		 <div class="nome">
 			<h1 th:text="${buffet.nome}">Paolo</h1>
-			<h2 th:text="${buffet.descrizione}">Rossi</h2>
+			</div>
+			<div class="chef">
+			<div class="text"><h2>Nome dello Chef:</h2> </div>
+			<div class="nomeChef">
 			<h2 th:text="${buffet.chef.nome}">Rossi</h2>
+			</div></div>
 			
-		</div>
+			<div class="descrizione">
+			Descrizione:    <span th:text="${buffet.descrizione}">Rossi</span>
+			</div>
+			
+			
 		
-		<div class="lista">
-				<li th:each="piatto : ${patti}"><a href="piatto.html"
+		
+	   <div class="elenco">
+				<li class= "punto" th:each="piatto : ${listapiatti}"><a href="piatto.html"
 					th:href="@{'/piatto' + '/' + ${piatto.id}}" th:text="|${piatto.nome} |">Buffetefefef
 				</a></li>
 			</div>
 			
 			
 			
-					<div th:each="piatto : ${piatti}">
-			
-			
-			<div class="opere">
-			
-			
-			
-			
-			
-			
-			<a href="piatto.html"
-			
-				th:href="@{'/piatto' + '/' + ${piatto.id}}" th:text="${piatto.nomr}  "
-				
-				>nome
-					opera</a>
-					
-			
-					
-            
-	           
-	  </div>
-	 </div>
-		
 		
 		
 		

@@ -1,0 +1,34 @@
+.blocco{
+	display: inline-flex;
+	margin-top:150px;
+	margin-left:100px;
+	width:90%;
+	
+	
+}
+
+.immagine{
+	display: flex;
+	
+
+}
+
+.testo{
+	display:inline-flex;
+	width:100%;
+	flex-direction:column;
+	margin-left:20px;
+	
+}
+.nome{
+	display: flex;
+}
+.descrizione{
+	display: flex;
+}
+.origine{
+	display: flex;
+}
+.buffet{
+	display: flex;
+}

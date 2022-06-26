@@ -14,15 +14,15 @@
 	
 		
 		
-			<div class="lista">
-			<ul>
-			<div class="punto">
-				<li 
+			<div class="elenco">
+			
+			
+				<li class="punto"
 				th:each="chef : ${chefs}"><a href="chef.html"
 					th:href="@{'/chef' + '/' + ${chef.id}}" th:text="|${chef.nome} |">Buffetefefef
 				</a></li>
-			</div>
-		</ul>
+			
+		
 		</div>
 	
 	<div th:if="${credentials}">

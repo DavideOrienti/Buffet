@@ -1,0 +1,36 @@
+
+
+.tabella {
+  border-collapse: collapse;
+  margin: 25px 25px;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+.tabella thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.tabella th,
+.tabella td {
+  padding: 12px 15px;
+}
+
+.tabella tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tabella tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+

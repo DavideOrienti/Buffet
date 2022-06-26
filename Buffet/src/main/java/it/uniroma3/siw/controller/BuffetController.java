@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.service.BuffetService;
+import it.uniroma3.siw.service.PiattoService;
 import it.uniroma3.siw.validator.BuffetValidator;
 
 @Controller
@@ -26,6 +27,11 @@ public class BuffetController {
 	private BuffetService bs;
 	@Autowired
 	private BuffetValidator bv;
+	
+	private Buffet buffetCorrente;
+	
+	@Autowired
+	private PiattoService ps;
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -51,6 +57,8 @@ public class BuffetController {
 			bs.saveBuffet(buffet);
 			//model.addAttribute("buffet", model);
 			model.addAttribute("buffets", this.bs.FindAll());
+			
+			//model.addAttribute("piatti", this.bs.getPiattoService().FindById(buffet.getId()));
 			
 			
 			if(AuthenticationController.loggato) {
@@ -90,6 +98,7 @@ public class BuffetController {
 		model.addAttribute("login",AuthenticationController.loggato);
 		model.addAttribute("buffets", this.bs.FindAll());
 		
+		
 		if(AuthenticationController.loggato) {
 			if(AuthenticationController.admin) {	
 				model.addAttribute("credentials",AuthenticationController.admin);
@@ -102,7 +111,9 @@ public class BuffetController {
 	@GetMapping("/buffet/{id}")
 	  public String getBuffet(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("login",AuthenticationController.loggato);
+		buffetCorrente = this.bs.FindById(id);
 	    model.addAttribute("buffet", this.bs.FindById(id));
+	    model.addAttribute("listapiatti", this.ps.PiattiPerBuffet(buffetCorrente));
 	    return "buffet.html";
 
 }

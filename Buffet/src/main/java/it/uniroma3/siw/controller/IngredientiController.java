@@ -85,8 +85,9 @@ public String getBuffet(Model model) {
 
 }
 @GetMapping("/ingredienteForm")
-public String getIngrediente(Model model) {
+public String getIngredient(Model model) {
 	model.addAttribute("ingrediente", new Ingredienti());
+	model.addAttribute("listapiatti", this.is.getPs().FindAll());
 	model.addAttribute("login",AuthenticationController.loggato);
 	return "ingredienteForm.html";
 	

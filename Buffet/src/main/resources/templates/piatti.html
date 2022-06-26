@@ -2,11 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/piatti.css}" rel="stylesheet" />
 <title>Persone</title>
 </head>
 <body>
     <header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
+    
+    <h1>Elenco Di Tutti i Piatti</h1>
+
+<!--  <div>
 		<h4>Piatti</h4>
 		<ul>
 			<li th:each="piatto : ${piatti}"><a href="piatto.html"
@@ -15,16 +19,82 @@
 		</ul>
 	</div>
 	
+
+
+<div class="tabella" th:each="piatto : ${piatti}">
+
+
+	<table border="1" style="width:800px">
 	
+	
+  
+       
+   <tr >
+   <td th:text="${piatto.nome}">A Smoke Test'</td>
+   <td th:text="${piatto.descrizione}">A Smoke Test'</td>
+   <td th:text="${piatto.buffet.nome}">A Smoke Test'</td>
+</tr>
+    
+   
+</table>
+
+<table border="1" style="width:800px">
+	
+	
+   <tr>
+        <td th:text="${piatto.buffet.nome}">A Smoke Test'</td>
+        
+      </tr>
+       
+   <tr >
+   <td th:text="${piatto.nome}">A Smoke Test'</td>
+   <td th:text="${piatto.descrizione}">A Smoke Test'</td>
+   <td th:text="${piatto.buffet.nome}">A Smoke Test'</td>
+</tr>
+    
+   
+</table>
+	</div>
+	
+	-->
+	
+		<table class="tabella" border="1" style="width:800px">
+		<thead>
+    <tr>
+        <td>Nome Piatto</td>
+        <td>Descrizione</td>
+        <td>Buffet a cui Appartengono</td>
+    </tr>
+    </thead>
+    <tbody>
+   <tr th:each="piatto : ${piatti}">
+   <td  th:text="${piatto.nome}"> <a href="piatto.html"> A Smoke Test'</a></td>
+   <td th:text="${piatto.descrizione}">A Smoke Test'</td>
+   <td th:text="${piatto.buffet.nome}">A Smoke Test'</td>
+</tr>
+<tbody>
+    
+</table>
 	
 		<div th:if="${credentials}">
         <div class="Aggiungi">
 		  <h5>
-            <a href="piattiForm">Aggiungi Piatto</a>
+            <a href="piattoForm">Aggiungi Piatto</a>
             </h5>
             </div>
 
            </div>
+           
+             <div th:if="${credentials}">
+        <div class="Aggiungi">
+		  <h5>
+            <a href="ingredienteForm">Aggiungi Ingrediente</a>
+            </h5>
+            </div>
+
+           </div>
+           
+           
            
 	 <footer th:replace="fragments/base.html :: footer"></footer>
 </body>
