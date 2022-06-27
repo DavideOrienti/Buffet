@@ -62,6 +62,10 @@ public class Ingredienti {
 		this.piatti = piatti;
 	}
 	
+	public void remove(Piatto p) {
+		this.piatti.remove(p);
+	}
+	
 	
 	
 	

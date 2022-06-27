@@ -28,6 +28,9 @@ public class PiattoService {
 	@Autowired
 	private BuffetService bs;
 	
+	@Autowired
+	private IngredientiService is;
+	
 
 	
 	
@@ -99,6 +102,10 @@ public class PiattoService {
 		return bs;
 	}
 	
+	public IngredientiService getIngredientiService() {
+		return is;
+	}
+	
 //	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
 //	public List<Ingredienti> FindIngredienti () {
 //		return pr.findIngredientiBy();		
@@ -110,6 +117,13 @@ public class PiattoService {
 	public List<Piatto> PiattiPerBuffet(Buffet buffet) {
 		return (List<Piatto>) pr.findByBuffet(buffet);
 	}
+	
+	@Transactional
+	public void rimuovi(Piatto piatto) {
+		pr.delete(piatto);
+	}
+	
+	
 	
 	
 	

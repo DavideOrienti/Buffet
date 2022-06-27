@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.service.IngredientiService;
+import it.uniroma3.siw.service.PiattoService;
 import it.uniroma3.siw.validator.IngredientiValidator;
 
 
@@ -28,6 +29,8 @@ public class IngredientiController {
 	private IngredientiService is;
 	@Autowired
 	private IngredientiValidator iv;
+	@Autowired
+	private PiattoService ps;
 	
 	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -39,6 +42,7 @@ public class IngredientiController {
 		public String addIngredienti(@Valid @ModelAttribute("ingrediente")Ingredienti ingredienti,BindingResult br,Model model) {
 		iv.validate(ingredienti, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
+		model.addAttribute("login",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			is.savePersona(ingredienti);
 			
@@ -84,10 +88,11 @@ public String getBuffet(Model model) {
     return "ingrediente.html";
 
 }
-@GetMapping("/ingredienteForm")
+@GetMapping("ingredienteForm")
 public String getIngredient(Model model) {
+	logger.debug("ingredienteForm");
 	model.addAttribute("ingrediente", new Ingredienti());
-	model.addAttribute("listapiatti", this.is.getPs().FindAll());
+	model.addAttribute("listapiatti", this.ps.FindAll());
 	model.addAttribute("login",AuthenticationController.loggato);
 	return "ingredienteForm.html";
 	

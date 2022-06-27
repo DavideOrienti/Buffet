@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.model.Piatto;
+import it.uniroma3.siw.service.IngredientiService;
 import it.uniroma3.siw.service.PiattoService;
 import it.uniroma3.siw.validator.PiattoValidator;
 
@@ -29,6 +32,9 @@ public class PiattoController {
 	private PiattoService ps;
 	@Autowired
 	private PiattoValidator pv;
+	
+	@Autowired
+	private IngredientiService is;
 	
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -46,6 +52,7 @@ public class PiattoController {
 		public String addPiatto(@Valid @ModelAttribute("piatto")Piatto piatto,BindingResult br,Model model) {
 		pv.validate(piatto, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
+		model.addAttribute("login",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			ps.savePersona(piatto);
 			//model.addAttribute("piatti", model);
@@ -90,8 +97,16 @@ public String getBuffet(Model model,Piatto piatto) {
 	
 	@GetMapping("/piatto/{id}")
 	  public String getPiatto(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("login",AuthenticationController.loggato);
 	    model.addAttribute("piatto", this.ps.FindById(id));
-	    model.addAttribute("login",AuthenticationController.loggato);
+	    model.addAttribute("IngredientiPiatto", this.ps.FindById(id).getIngredienti());
+	   
+	    if(AuthenticationController.loggato) {
+			if(AuthenticationController.admin) {	
+				model.addAttribute("credentials",AuthenticationController.admin);
+				
+			}}
+	    
 	    return "piatto.html";
 
 }
@@ -103,5 +118,78 @@ public String getBuffet(Model model,Piatto piatto) {
 		return "piattoForm.html";
 		
 	}
+	
+	@GetMapping("/remove/{id}")
+	public String removePiatto(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+		ps.rimuovi(this.ps.FindById(id));
+		if(AuthenticationController.admin) {	
+			model.addAttribute("credentials",AuthenticationController.admin);
+			//model.addAttribute("credentials",credentials.getRole());
+		}
+		return "index.html";
+	}
+	
+
+	
+//	@GetMapping("/modifica/{id}")
+//	
+//	public String ModificaPiatto(@PathVariable("id") Long id, Model model) {
+//		model.addAttribute("login",AuthenticationController.loggato);
+//		model.addAttribute("piatto", this.ps.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "piatto.html";
+//	}
+//	@PostMapping("/modifica/{id}")
+//	
+//	public String newCollezione( Model model,@ModelAttribute("piatto")Piatto piatto, BindingResult bindingResult) {
+//		this.pv.validate(piatto, bindingResult);
+//		//model.addAttribute("login",AuthenticationController.loggato);
+//		if (!bindingResult.hasErrors()) {
+//			Piatto piattoCorrente=this.ps.FindById(null);  //<-----------
+//			
+//		piattoCorrente.setDescrizione(piattoCorrente.getDescrizione());
+//		piattoCorrente.setIngredienti(piattoCorrente.getIngredienti());
+//		piattoCorrente.setNome(piattoCorrente.getNome());
+//		
+//		
+//			
+//			
+//			return "collezioni.html";
+//			//}
+//		}
+//		
+//		return "collezioneForm.html";
+//	}
+
+	
+	
+//	@PostMapping("/remove/{id}")
+//	
+//	public String removePiatto(@PathVariable("id") Long idPiatto, Model model,@RequestParam("ingrediente") Long idIngrediente) {
+//		
+//		Piatto p = this.ps.FindById(idPiatto);
+//		Ingredienti i = this.ps.getIngredientiService().FindById(idIngrediente);
+//		if(i.getPiatti().contains(p)){
+//			i.remove(p);
+//		    ps.getIngredientiService().inserisci(i);
+//		}
+//		model.addAttribute("piatto" , p);
+//		model.addAttribute("login",AuthenticationController.loggato);
+//		
+//		//ps.rimuovi(this.ps.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "index.html";
+//	}
+	
+
+	
 
 }

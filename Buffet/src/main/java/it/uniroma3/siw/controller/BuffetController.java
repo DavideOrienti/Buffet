@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.BuffetService;
 import it.uniroma3.siw.service.PiattoService;
 import it.uniroma3.siw.validator.BuffetValidator;
@@ -127,6 +129,69 @@ public class BuffetController {
 		
 	}
 	
+//	@PostMapping("/remove/{id}")
+//	
+//	public String getOepra(@PathVariable("id") Long id, Model model) {
+//		//model.addAttribute("login",AuthenticationController.loggato);
+//		//model.addAttribute("buffets", this.bs.FindAll());
+//		
+//		Buffet buffetnuovo = new Buffet("BuffetSconosciuto");
+//		model.addAttribute("buffet",buffetnuovo);
+//		List<Piatto> listaPiatti = new ArrayList<Piatto>();
+//		listaPiatti= bs.FindById(id).getPiatti();
+//		for(int i=0;i<listaPiatti.size();i++) {
+//			listaPiatti.get(i).setBuffet(buffetnuovo);
+//		}
+//		//bs.rimuovi(this.bs.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "index.html";
+//	}
+//	
 	
+//	@GetMapping("/remove/{id}")
+//	
+//	public String getOpera(@PathVariable("id") Long id, Model model) {
+//		//model.addAttribute("login",AuthenticationController.loggato);
+//		//model.addAttribute("buffets", this.bs.FindAll());
+//		
+//		this.bs.FindById(id).setPiatti(null);
+//		this.bs.rimuovi(this.bs.FindById(id));
+//		
+//		//bs.rimuovi(this.bs.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "index.html";
+//	}
+
+//	@GetMapping("/remove/{id}")
+//	public String removeBuffet(@PathVariable("id") Long id, Model model) {
+//		model.addAttribute("login",AuthenticationController.loggato);
+//		model.addAttribute("piatti", this.bs.FindById(id).getPiatti()); 
+//		//model.addAttribute(model)
+//		bs.rimuovi(this.bs.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "collezioni.html";
+//	}
+////	
+	
+//	@GetMapping("/remove/{id}")
+//	public String getOepra(@PathVariable("id") Long id, Model model) {
+//		model.addAttribute("login",AuthenticationController.loggato);
+//		model.addAttribute("buffets", this.bs.FindAll());
+//		bs.rimuovi(this.bs.FindById(id));
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "index.html";
+//	}
 
 }

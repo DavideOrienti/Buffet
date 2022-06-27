@@ -36,7 +36,10 @@ public class Piatto {
 	}
 	
 	
+	
+	
 	@ManyToOne 
+	
 	private Buffet buffet;
 	
 	
@@ -45,7 +48,12 @@ public class Piatto {
 	private List<Ingredienti> ingredienti ;
 	
 	
-
+//	public Buffet getBuffet() {
+//		if(this.buffet!=null)
+//		return buffet;
+//		return new Buffet("BuffetSconosciuto");
+//	}
+//	
 	public String getNome() {
 		return nome;
 	}
@@ -77,6 +85,8 @@ public class Piatto {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+
+	
 
 	
 

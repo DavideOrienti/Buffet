@@ -24,19 +24,25 @@ public class Buffet {
     private String nome;
 	
 	//@Column(nullable = false)
-	@NotBlank
+	
 	private String descrizione;
 	
 	@ManyToOne (cascade = {CascadeType.PERSIST})
+	
 	private Chef chef;
 	
 	
 	
-	@OneToMany (mappedBy = "buffet", cascade = {CascadeType.PERSIST})
+	@OneToMany (mappedBy = "buffet", cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
+	
 	private List<Piatto> piatti;
 	
 	public Buffet() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Buffet(String nome) {
+		this.nome = nome;
 	}
 
 	public Long getId() {

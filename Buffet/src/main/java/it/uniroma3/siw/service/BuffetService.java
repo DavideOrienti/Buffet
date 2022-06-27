@@ -64,6 +64,12 @@ public class BuffetService {
 		return cs;
 	}
 	
+	@Transactional
+	public void rimuovi(Buffet buffet) {
+		br.delete(buffet);
+	}
+	
+	
 	
 	
 //	public PiattoService getPiattoService() {

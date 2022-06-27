@@ -37,7 +37,7 @@
 		<div>
 				<select name="piatti" roleId="piatti" id="piatti"
 					th:field="*{piatti}">
-					<option value=" ">Buffet</option>
+					<option value=" ">Piatto</option>
 					<option th:each="piatti : ${listapiatti}"
 						th:value="${piatti.id}"
 						th:text="${piatti.nome}"></option>

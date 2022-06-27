@@ -19,8 +19,8 @@ public class IngredientiService {
 	@Autowired  // autocarichi
 	private IngredientiRepository ir;
 	
-	@Autowired  // autocarichi
-	private PiattoService  ps;
+//	@Autowired  // autocarichi
+//	private PiattoService  ps;
 	
 	
 	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
@@ -52,11 +52,16 @@ public class IngredientiService {
 	public boolean alreadyExist(Ingredienti ing) {
 		return ir.existsByNome(ing.getNome());
 	}
-	public PiattoService getPs() {
-		return ps;
-	}
-	public void setPs(PiattoService ps) {
-		this.ps = ps;
+//	public PiattoService getPs() {
+//		return ps;
+//	}
+//	public void setPs(PiattoService ps) {
+//		this.ps = ps;
+//	}
+	
+	@Transactional
+	public Ingredienti inserisci (Ingredienti ingrediente) {
+		return ir.save(ingrediente);
 	}
 	
 	

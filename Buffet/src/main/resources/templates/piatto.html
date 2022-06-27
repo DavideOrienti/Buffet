@@ -39,23 +39,27 @@
 			</div>
 		</div>
 		
-		<div class="lista">
-				<li th:each="ingredienti : ${listaIngredienti}"><a href="ingrediente.html"
-					th:href="@{'/ingredienti' + '/' + ${ingredienti.nome}}" th:text="|${ingredienti.nome} |">Buffetefefef
+<!--  		<div class="lista">
+				<li th:each="ingrediente : ${IngredientiPiatto}"><a href="ingrediente.html"
+					th:href="@{'/ingrediente' + '/' + ${ingrediente.nome}}" th:text="|${ingrediente.nome} |">Buffetefefef
 				</a></li>
 			</div>
-			
+			 -->	
 			 
-          <div th:if="${credentials}">
-        <div class="Aggiungi">
-		  <h5>
-            <a href="ingredienteForm">Aggiungi Piatto</a>
-            </h5>
+			 <div class="lista">
+				<li th:each="ingrediente : ${IngredientiPiatto}"  th:text="|${ingrediente.nome} |">Buffetefefef
+				</li>
+			</div>
+			 
+         
+  
+      
+            <div th:if="${credentials}"> 
+     <div class="Rimuovi">
+		 <a th:href="@{'/remove'+'/'+${piatto.id}}">Rimuovi opera</a>
             </div>
 
            </div>
-		
-		
 		
 		
 		
