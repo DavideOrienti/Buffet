@@ -3,12 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/piattoForm.css}" rel="stylesheet" />
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
-<title>Inserimento persona</title>
+<title>PiattoForm</title>
 </head>
 <body>
 
 <header th:replace="fragments/base.html :: intestazione"></header>
+
+<div class="container">
+		<div class="contact-box">
+			<div class="left"></div>
+			<div class="right">
+				<h2>PiattoForm</h2>
 
 	<form th:action="@{/piatto}" method="post" th:object="${piatto}">
 
@@ -18,25 +30,25 @@
 
 
 		<div>
-			Nome:<input type="text" th:field="*{nome}" />
+			Nome:<input type="text" class="field" th:field="*{nome}" />
 			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
 			
 		</div>
 		
 		<div>
-			Origine:<input type="text" th:field="*{origine}" />
+			Origine:<input type="text" class="field" th:field="*{origine}" />
 			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
 			
 		</div>
 		
 		<div>
-			Descrizione:<input type="text" th:field="*{descrizione}" />
+			Descrizione:<input type="text" class="field" th:field="*{descrizione}" />
 			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
 		</div>
 		
 		<div>
-				<select name="buffet" roleId="buffet" id="buffet"
-					th:field="*{buffet}">
+				<select name="buffet"  roleId="buffet" id="buffet"
+				class="field"	th:field="*{buffet}">
 					<option value=" ">Buffet</option>
 					<option th:each="buffet : ${buffets}"
 						th:value="${buffet.id}"
@@ -52,9 +64,12 @@
 				</div>
 		
 		<div>
-			<button type="submit"> Conferma </button></div>
+			<button type="submit" class="btn"> Conferma </button></div>
 
 	</form>
+			</div>
+		</div>
+	</div>
 	
 		<footer th:replace="fragments/base.html :: footer"></footer>
 	</body>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 body {
   line-height: 1.5;
   font-family: Poppins;
@@ -90,7 +91,7 @@ a:hover {
 
 footer{
 
-  margin-top :100%;
+  margin-top :40%;
   padding: 70px 0;
   max-width: 100%x;
   padding-left: 10%;

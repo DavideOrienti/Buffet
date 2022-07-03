@@ -2,30 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/loginForm.css}" rel="stylesheet" />
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
  <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+ <title>Login/Register</title>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
-	<div class="posizione">
-	<div>
-		<h4>Login</h4>
-	</div>
+	
+	 <div class="center">
+		<h1>Login</h1>
+	
 	<form th:action="@{/login}" method="POST">
 		<div>
-			<div>
+			 <div class="txt_field">
 				<span>Username:</span>
 				<span><input name="username" type="text" required /></span>
 			</div>		
-			<div>
+			 <div class="txt_field">
 				<span>Password:</span>
 				<span><input name="password" type="password" required /></span>
 			</div>
 			<div>
-				<span><button type="submit">Login</button></span>
+				<span><input type="submit" value="Login"/></span>
 			</div>
-			<h2>oppure</h2>
-			<div>
+			
+			<div class="signup_link">
             <a th:href="register">Registrati</a>
            </div>
 			

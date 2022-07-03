@@ -85,6 +85,12 @@ public class Buffet {
 		this.piatti = piatti;
 	}
 	
+	public void removePitto(Piatto p) {
+		for(int i=0;i<piatti.size();i++) {
+		
+		}
+	}
+	
 	
 	
 	

@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,16 +8,22 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.IngredientiService;
@@ -54,7 +61,7 @@ public class PiattoController {
 		                              errori contro anche che non ci siano duplicati*/
 		model.addAttribute("login",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
-			ps.savePersona(piatto);
+			ps.savePiatto(piatto);
 			//model.addAttribute("piatti", model);
 			model.addAttribute("piatti", this.ps.FindAll());
 			
@@ -119,18 +126,50 @@ public String getBuffet(Model model,Piatto piatto) {
 		
 	}
 	
-	@GetMapping("/remove/{id}")
-	public String removePiatto(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("login",AuthenticationController.loggato);
-		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-		ps.rimuovi(this.ps.FindById(id));
-		if(AuthenticationController.admin) {	
-			model.addAttribute("credentials",AuthenticationController.admin);
-			//model.addAttribute("credentials",credentials.getRole());
-		}
-		return "index.html";
-	}
+	@PostMapping("/remove/{id}")
 	
+    public String removePiatto(Model model, @PathVariable("id") Long idPiatto) {
+
+            Piatto p= ps.piattoPerId(idPiatto);
+
+            List<Ingredienti> ingredientiP = new ArrayList<>( p.getIngredienti());
+
+            for(Ingredienti i: ingredientiP) {
+
+                p.removeIngrediente(i);
+                i.removePiatto(p);
+            }
+
+            ps.rimuovi(p);
+//            UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//            Credentials credentials = this.ps.get.getCredentials(userDetails.getUsername());
+//
+//            model.addAttribute("credentials", credentials);
+            if(AuthenticationController.admin) {	
+    			model.addAttribute("credentials",AuthenticationController.admin);
+    			//model.addAttribute("credentials",credentials.getRole());
+    		}
+
+            
+            return "index.html";
+    }
+	
+	
+//	@GetMapping("/remove/{id}")
+//	public String removePiatto(@PathVariable("id") Long id, Model model) {
+//		model.addAttribute("login",AuthenticationController.loggato);
+//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+//		
+//		ps.rimuovi(this.ps.FindById(id));
+//	
+//		if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);
+//			//model.addAttribute("credentials",credentials.getRole());
+//		}
+//		return "index.html";
+//	}
+	
+
 
 	
 //	@GetMapping("/modifica/{id}")
@@ -138,11 +177,12 @@ public String getBuffet(Model model,Piatto piatto) {
 //	public String ModificaPiatto(@PathVariable("id") Long id, Model model) {
 //		model.addAttribute("login",AuthenticationController.loggato);
 //		model.addAttribute("piatto", this.ps.FindById(id));
+//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
 //		if(AuthenticationController.admin) {	
 //			model.addAttribute("credentials",AuthenticationController.admin);
 //			//model.addAttribute("credentials",credentials.getRole());
 //		}
-//		return "piatto.html";
+//		return "piattoForm.html";
 //	}
 //	@PostMapping("/modifica/{id}")
 //	
@@ -150,7 +190,7 @@ public String getBuffet(Model model,Piatto piatto) {
 //		this.pv.validate(piatto, bindingResult);
 //		//model.addAttribute("login",AuthenticationController.loggato);
 //		if (!bindingResult.hasErrors()) {
-//			Piatto piattoCorrente=this.ps.FindById(null);  //<-----------
+//			Piatto piattoCorrente=this.ps.FindById(piatto.getId());  //<-----------
 //			
 //		piattoCorrente.setDescrizione(piattoCorrente.getDescrizione());
 //		piattoCorrente.setIngredienti(piattoCorrente.getIngredienti());
@@ -159,36 +199,68 @@ public String getBuffet(Model model,Piatto piatto) {
 //		
 //			
 //			
-//			return "collezioni.html";
+//			return "index.html";
 //			//}
 //		}
 //		
-//		return "collezioneForm.html";
+//		return "piattoForm.html";
 //	}
 
-	
-	
-//	@PostMapping("/remove/{id}")
+//	@GetMapping("/modifica/{id}")
+//    public String modificaConcerto(Model model,@PathVariable("id") Long id) {
+//        Piatto p= ps.FindById(id);
+//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+//        model.addAttribute("piatto", p);
+//        
+//        return "piattoForm.html";
+//    }
+//
+//	@PostMapping("/modifica/{id}")
+//  public String modificaPiatto(Model model,@PathVariable("id") Long id,@RequestBody Piatto piatto) {
+//	Piatto p=ps.update(piatto,id);
+//		model.addAttribute("piatto",p);
+//		model.addAttribute("piatti", this.ps.FindAll());
+//		model.addAttribute("buffet", p.getBuffet());
+//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+//		model.addAttribute("IngredientiPiatto", this.ps.FindById(id).getIngredienti());
+//		 if(AuthenticationController.admin) {	
+//				model.addAttribute("credentials",AuthenticationController.admin);
+//				//model.addAttribute("credentials",credentials.getRole());
+//			}
+//      
+//      return "piattoForm.html";
+//  }
 //	
-//	public String removePiatto(@PathVariable("id") Long idPiatto, Model model,@RequestParam("ingrediente") Long idIngrediente) {
-//		
-//		Piatto p = this.ps.FindById(idPiatto);
-//		Ingredienti i = this.ps.getIngredientiService().FindById(idIngrediente);
-//		if(i.getPiatti().contains(p)){
-//			i.remove(p);
-//		    ps.getIngredientiService().inserisci(i);
-//		}
-//		model.addAttribute("piatto" , p);
-//		model.addAttribute("login",AuthenticationController.loggato);
-//		
-//		//ps.rimuovi(this.ps.FindById(id));
-//		if(AuthenticationController.admin) {	
-//			model.addAttribute("credentials",AuthenticationController.admin);
-//			//model.addAttribute("credentials",credentials.getRole());
-//		}
-//		return "index.html";
-//	}
-	
+//	@GetMapping("/modifica/{id}")
+//    public String modificaPiatto(Model model,@PathVariable("id") Long id) {
+//        Piatto p= ps.FindById(id);
+//        model.addAttribute("piatto", p);
+//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+//        return "piattoForm.html";
+//    }
+//
+//	@PostMapping("/modifica/{id}")
+//    public String modificaPiatto(@ModelAttribute("piatto") Piatto piatto, Model model,BindingResult bindingResult, @PathVariable("id") Long Id) {
+//       
+//        piatto.setBuffet(ps.piattoPerId(Id).getBuffet());
+//        piatto.setDescrizione(ps.FindById(Id).getDescrizione());
+//        piatto.setImmagine(ps.FindById(Id).getImmagine());
+//        piatto.setIngredienti(ps.FindById(Id).getIngredienti());
+//        piatto.setNome(ps.FindById(Id).getNome());
+//        piatto.setOrigine(ps.FindById(Id).getOrigine());
+////        piatto.setId(Id);
+//        ps.savePiatto(piatto);
+//       
+//        
+//        if(AuthenticationController.admin) {	
+//			model.addAttribute("credentials",AuthenticationController.admin);}
+//        
+//       // model.addAttribute("buffet" ps.FindById(Id).getBuffet());
+//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+//
+//        return "index.html";
+//         }
+//
 
 	
 

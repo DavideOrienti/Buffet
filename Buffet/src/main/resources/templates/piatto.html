@@ -4,6 +4,11 @@
 
   <link th:href="@{/css/my-style.css}" rel="stylesheet" />
   <link th:href="@{/css/piatto.css}" rel="stylesheet" />
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
 <title th:text="${title}">Buffet</title>
 </head>
@@ -54,13 +59,27 @@
          
   
       
-            <div th:if="${credentials}"> 
-     <div class="Rimuovi">
-		 <a th:href="@{'/remove'+'/'+${piatto.id}}">Rimuovi opera</a>
-            </div>
+       <!--     <div th:if="${credentials}">  
+    <div class="Rimuovi">
+		 <a th:href="@{'/remove'+'/'+${piatto.id}}" method="POST">Rimuovi opera</a>
+            </div> 
 
-           </div>
-		
+           </div> --> 
+           
+           
+		<div>
+            <form  th:action="@{'/remove'+'/' + ${piatto.id}}"
+                method="POST">
+                <button class="sub-button" type="submit">Rimuovi</button>
+            </form>
+        </div>
+        
+        <div>
+            <form  th:action="@{'/modifica'+'/' + ${piatto.id}}"
+                method="GET">
+                <button class="sub-button" type="submit">Modifica</button>
+            </form>
+        </div>
 		
 		
 		

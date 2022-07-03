@@ -3,50 +3,68 @@
 <head>
 <meta charset="UTF-8" />
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/buffetForm.css}" rel="stylesheet" />
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
 
-<title>Inserimento persona</title>
+<title>BuffetsForm</title>
 </head>
 <body>
 
-<header th:replace="fragments/base.html :: intestazione"></header>
+	<header th:replace="fragments/base.html :: intestazione"></header>
 
-	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
-	
+	<div class="container">
+		<div class="contact-box">
+			<div class="left"></div>
+			<div class="right">
+				<h2>BuffetForm</h2>
 
-		<div th:if="${#fields.hasGlobalErrors()}">
-		 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
-		</div>
+				<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
 
 
-		<div>
-			Nome:<input type="text" th:field="*{nome}" />
-			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
-			
-		</div>
-		
-		<div>
-			Descrizione:<input type="text" th:field="*{descrizione}" />
-			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
-		</div>
-		
-		<div>
-				<select name="chef" roleId="chef" id="chef"
-					th:field="*{chef}">
-					<option value=" ">Chef</option>
-					<option th:each="chef : ${chefs}"
-						th:value="${chef.id}"
-						th:text="${chef.nome}"></option>
+					<div th:if="${#fields.hasGlobalErrors()}">
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+					</div>
 
-				</select>
+
+					<div>
+						Nome:<input type="text" class="field" th:field="*{nome}" />
+						<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+
+					</div>
+
+					<div>
+						Descrizione:<input type="text" class="field"
+							th:field="*{descrizione}" />
+						<div th:if="${#fields.hasErrors('descrizione')}"
+							th:errors="*{descrizione}"></div>
+					</div>
+
+					<div>
+						<select name="chef" roleId="chef" id="chef" th:field="*{chef}"
+							class="field">
+							<option value=" ">Chef</option>
+							<option th:each="chef : ${chefs}" th:value="${chef.id}"
+								th:text="${chef.nome}"></option>
+
+						</select>
+					</div>
+
+
+
+					<div>
+						<button type="submit" class="btn">Conferma</button>
+					</div>
+				</form>
 			</div>
-		
-		
-		
-		<div>
-			<button type="submit"> Conferma </button></div>
+		</div>
+	</div>
 
-	</form>
-	
-		<footer th:replace="fragments/base.html :: footer"></footer>
-	</body>
-	</html>
+
+
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

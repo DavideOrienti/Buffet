@@ -64,6 +64,13 @@ public class IngredientiService {
 		return ir.save(ingrediente);
 	}
 	
+//	@Transactional
+//	public void rimuovi(Piatto piatto) {
+//		ir.delete(piatto.getId());
+//		
+//	}
+
+	
 	
 
 

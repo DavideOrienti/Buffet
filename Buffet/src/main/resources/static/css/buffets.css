@@ -1,3 +1,17 @@
+
+body {
+	
+  margin: 0;
+  
+   position: static;
+  background: linear-gradient(rgba(100,100,100, 0.6), rgba(0, 0, 0, 0.3)),
+    no-repeat left/cover url(/images/sfondoBuffet.jpg)  ;
+     color: white;
+     background-size: cover;
+    
+}
+
+
 .titolo {
   display: flex;
   height: 200px;

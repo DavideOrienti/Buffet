@@ -41,8 +41,13 @@ public class BuffetController {
 	@GetMapping("/")
     public String defaultMapping(Model model)
     {
+		if(AuthenticationController.loggato) {
+			if(AuthenticationController.admin) {
+				model.addAttribute("credentials",AuthenticationController.admin);
+			}}
         return "index.html";
-    }
+    }	
+	
 	
 	//GET per operazioni di lettura
 	//POST per operazioni di scrittura

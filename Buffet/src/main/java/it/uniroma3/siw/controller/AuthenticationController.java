@@ -54,6 +54,7 @@ public class AuthenticationController {
 		loggato=false;
 		admin=false;
 		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("credentials",AuthenticationController.admin);
 		return "index";
 	}
 	

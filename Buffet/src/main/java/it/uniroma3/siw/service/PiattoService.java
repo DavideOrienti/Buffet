@@ -2,6 +2,7 @@ package it.uniroma3.siw.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -35,7 +36,7 @@ public class PiattoService {
 	
 	
 	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
-	public void savePersona (Piatto piatto) {
+	public void savePiatto (Piatto piatto) {
 		pr.save(piatto);		
 		
 		
@@ -47,6 +48,15 @@ public class PiattoService {
 	
 	  return pr.findById(id).get();  // senza get non mi ritornava una persona ma un messaggio java optional
 	}
+	
+	@Transactional
+    public Piatto piattoPerId(Long id) {
+        Optional<Piatto> optional = pr.findById(id);
+        if (optional.isPresent())
+            return optional.get();
+        else 
+            return null;
+    }
 	@Transactional
 	public List<Piatto> FindAll(){
 		/* attenzine il metodo pr.findAll() non ritorna un alista ma un iteratore quindi
@@ -95,8 +105,11 @@ public class PiattoService {
 	@Transactional
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Piatto piatto) {
-		return pr.existsByNome(piatto.getNome());
+		return pr.existsById(piatto.getId());
 	}
+//	public boolean alreadyExist(Piatto piatto) {
+//		return pr.existsByNome(piatto.getNome());
+//	}
 	
 	public BuffetService getBuffetService() {
 		return bs;
@@ -121,13 +134,61 @@ public class PiattoService {
 	@Transactional
 	public void rimuovi(Piatto piatto) {
 		pr.delete(piatto);
+		
+	}
+
+
+
+	public void update(Piatto piatto) {
+		pr.save(piatto);
+		
+	}
+
+
+	public Piatto update(Piatto piatto, Long id) {
+		
+		Piatto p = FindById(id);
+	
+		Buffet b = bs.FindById(piatto.getBuffet().getId());
+		if(p.getId().equals(piatto.getId())) {
+		p.setBuffet(piatto.getBuffet());
+		p.setId(piatto.getId());
+		p.setDescrizione(piatto.getDescrizione());
+		p.setIngredienti(piatto.getIngredienti());
+		p.setImmagine(piatto.getImmagine());
+		p.setOrigine(piatto.getOrigine());
+		p.setNome(piatto.getNome());
+		this.rimuovi(piatto);
+		
+		
+		pr.save(p);
+		}
+		return p;
+
 	}
 	
 	
+//
+//
+//	public void rimuoviIngredientiDalPiatto(Long id) {
+//		List<Ingredienti> ingredienti =new ArrayList<Ingredienti>();
+//		Piatto piatto = new Piatto();
+//		piatto=ir.ge
+//		ingredienti.addAll(FindAllIngredientiById(id));
+//		for(int i=0;i<p.getIngredienti().size();i++) {
+//			ir.deleteAll(p.getIngredienti());
+//		}
+		
+		
+	}
+
+
+	
+	
 	
 	
 	
 
 
 
-}
+

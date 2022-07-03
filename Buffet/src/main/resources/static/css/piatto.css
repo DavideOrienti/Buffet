@@ -1,3 +1,16 @@
+
+body {
+	
+  margin: 0;
+  
+   position: static;
+  background: linear-gradient(rgba(100,100,100, 0.6), rgba(0, 0, 0, 0.3)),
+    no-repeat left/cover url(/images/Piatti.jpg)  ;
+     color: white;
+     background-size: cover;
+}
+
+
 .blocco{
 	display: inline-flex;
 	margin-top:150px;

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotBlank;
 
 
@@ -62,9 +63,12 @@ public class Ingredienti {
 		this.piatti = piatti;
 	}
 	
-	public void remove(Piatto p) {
+	public void removePiatto(Piatto p) {
 		this.piatti.remove(p);
+		
 	}
+	
+	
 	
 	
 	

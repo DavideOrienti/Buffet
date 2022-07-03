@@ -3,7 +3,12 @@
 <head>
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
 <link th:href="@{/css/piatti.css}" rel="stylesheet" />
-<title>Persone</title>
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+<title>Piatti</title>
 </head>
 <body>
     <header th:replace="fragments/base.html :: intestazione"></header>
@@ -68,14 +73,15 @@
     </thead>
     <tbody>
    <tr th:each="piatto : ${piatti}">
-   <td  th:text="${piatto.nome}"> <a href="piatto.html"> A Smoke Test'</a></td>
-   <td th:text="${piatto.descrizione}">A Smoke Test'</td>
-    <td th:text="${piatto.buffet.nome}">A Smoke Test'</td>
+   <td  th:text="${piatto.nome}"> <a href="piatto.html"></a></td>
+   <td th:text="${piatto.descrizione}"></td>
+  <td th:text="${piatto.buffet.nome}"></td>
 </tr>
 <tbody>
     
 </table>
 	
+	    <div class="bottoni">
 		<div th:if="${credentials}">
         <div class="Aggiungi">
 		  <h5>
@@ -92,6 +98,7 @@
             </h5>
             </div>
 
+           </div>
            </div>
            
            

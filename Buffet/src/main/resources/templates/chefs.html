@@ -4,7 +4,12 @@
 
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
 <link th:href="@{/css/chefs.css}" rel="stylesheet" />
-<title>Persone</title>
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+<title>Chefs</title>
 </head>
 <body>
     <header th:replace="fragments/base.html :: intestazione"></header>
@@ -15,13 +20,30 @@
 		
 		
 			<div class="elenco">
+			<div class="chefs">
+		
+			<div th:each="chef : ${chefs}">				
+			<div class="punto">
+			<img th:src="${chef.immagine}" height="300" width="auto">
 			
 			
-				<li class="punto"
+			<div class="nome">
+			<a href="chef.html"
+			th:href= "@{'/chef' + '/' + ${chef.id}}" th:text="|${chef.nome} |">>nome	opera</a>
+			</div>
+			</div>
+			
+			</div>       
+	  </div>
+	 </div>
+			
+		<!--  	<li class="punto"
 				th:each="chef : ${chefs}"><a href="chef.html"
 					th:href="@{'/chef' + '/' + ${chef.id}}" th:text="|${chef.nome} |">Buffetefefef
 				</a></li>
-			
+				
+				
+			</div> -->
 		
 		</div>
 	

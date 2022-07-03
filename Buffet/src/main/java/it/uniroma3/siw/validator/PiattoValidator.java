@@ -29,8 +29,8 @@ public class PiattoValidator implements Validator{
 	public void validate(Object obj, Errors errors) {
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
-		 if(piattoService.alreadyExist((Piatto)obj)) {
-	            errors.reject("persona.duplicato");
+		 if(piattoService.alreadyExist((Piatto)obj) ) {
+	            errors.reject("piatto.duplicato");
 	        }}
 	}
 }

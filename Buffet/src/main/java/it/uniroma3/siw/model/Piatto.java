@@ -114,6 +114,12 @@ public class Piatto {
 		this.immagine = immagine;
 	}
 	
+	public void removeIngrediente(Ingredienti i) {
+		this.ingredienti.remove(i);
+	}
+	
+	
+	
 	
 	
 	
