@@ -35,6 +35,20 @@
 		
 		
 	</div>
+	  
+        <div>
+            <form  th:action="@{'/modifica'+'/' + ${chef.id}}"
+                method="GET">
+                <button class="sub-button" type="submit" th:text="#{modifica.chef}"> Modifica</button>
+            </form>
+        </div>
+        <!-- >div>
+            <form th:if="${credentials.role == 'ADMIN'}" th:action="@{'/admin/modificaChef' + '/' + ${chef.id}}"
+                method="GET">
+                <button class="sub-button" type="submit" th:text="#{modifica.chef}"  style="margin-left:44%;"></button>
+            </form>
+        </div-->
+        
 	  <footer th:replace="fragments/base.html :: footer"></footer>
 </body>
 </html>

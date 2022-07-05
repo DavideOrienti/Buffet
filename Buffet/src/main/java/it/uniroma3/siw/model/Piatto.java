@@ -3,7 +3,6 @@ package it.uniroma3.siw.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,10 +29,6 @@ public class Piatto {
 	
 	@NotBlank
 	private String immagine;
-	
-	public Piatto() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 	

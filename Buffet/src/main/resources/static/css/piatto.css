@@ -26,6 +26,19 @@ body {
 
 }
 
+.blocco-ingredienti{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	
+
+	}
+.lista{
+	margin-top: 30px;
+	margin-left: 30px;	
+}
+
 .testo{
 	display:inline-flex;
 	width:100%;
@@ -45,3 +58,26 @@ body {
 .buffet{
 	display: flex;
 }
+button{
+		
+	display:flex;
+	width: 350px;
+	height: 170px;
+	margin:40px;
+	
+	justify-content:center;
+	
+	background-color: buttonshadow;
+	border-radius: 120px;
+	box-shadow: inset 0 0 0 0 black;
+	
+	font-size:2rem;
+	
+	
+
+}
+button a{
+	margin-top:50px;
+	
+}
+

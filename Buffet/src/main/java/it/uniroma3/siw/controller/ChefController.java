@@ -1,12 +1,12 @@
 package it.uniroma3.siw.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Chef;
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.service.ChefService;
 import it.uniroma3.siw.validator.ChefValidator;
 
@@ -107,14 +109,28 @@ public String getBuffet(Model model) {
 		return "chefForm.html";
 	}
 	
-//	@GetMapping("/buffet/addChef")
-//	public String addOpera(Model model) {
-//		logger.debug("addOChef");
-//		model.addAttribute("chef", new Chef());
-//		
-//		//model.addAttribute("login",AuthenticationController.loggato);
-//		return "operaForm.html";
-//	}
-	
+	@GetMapping("/modifica/{id}")
+    public String modificaChef(Model model,@PathVariable("id") Long id) {
+        Chef c= cs.FindById(id);
+        model.addAttribute("chef", c);
+        return "ModificaChef.html";
+        }
+
+	@PostMapping("/chef/{id}")
+    public String modificaChef(@ModelAttribute("chef") Chef chef, Model model,BindingResult bindingResult,
+            @PathVariable("id") Long Id) {
+
+     chef.setId(Id);
+     cs.salvaChef(chef);
+     chef=cs.FindById(Id);
+     model.addAttribute("chef", chef);
+     if(AuthenticationController.loggato) {
+ 		if(AuthenticationController.admin) {	
+ 			model.addAttribute("credentials",AuthenticationController.admin);
+ 			
+ 		}}
+
+        return "chefs.html";
+         }
 
 }

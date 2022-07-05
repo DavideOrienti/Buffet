@@ -8,9 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Chef;
-import it.uniroma3.siw.repository.BuffetRepository;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.repository.ChefRepository;
 
 @Service
@@ -53,6 +52,11 @@ public class ChefService {
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Chef chef) {
 		return cr.existsByNomeAndCognomeAndNazionalita(chef.getNome(),chef.getCognome(),chef.getNazionalita());
+	}
+
+	public void salvaChef(Chef chef) {
+	cr.save(chef);
+		
 	}
 
 

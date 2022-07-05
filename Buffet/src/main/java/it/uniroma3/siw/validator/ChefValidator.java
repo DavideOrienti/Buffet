@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Chef;
-import it.uniroma3.siw.service.BuffetService;
 import it.uniroma3.siw.service.ChefService;
 
 @Component

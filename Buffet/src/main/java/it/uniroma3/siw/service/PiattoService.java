@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.model.Piatto;
-import it.uniroma3.siw.repository.BuffetRepository;
 import it.uniroma3.siw.repository.IngredientiRepository;
 import it.uniroma3.siw.repository.PiattoRepository;
 
@@ -105,11 +104,11 @@ public class PiattoService {
 	@Transactional
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Piatto piatto) {
-		return pr.existsById(piatto.getId());
-	}
-//	public boolean alreadyExist(Piatto piatto) {
-//		return pr.existsByNome(piatto.getNome());
+//		return pr.existsById(piatto.getId());
 //	}
+//	public boolean alreadyExist(Piatto piatto) {
+		return pr.existsByNome(piatto.getNome());
+	}
 	
 	public BuffetService getBuffetService() {
 		return bs;

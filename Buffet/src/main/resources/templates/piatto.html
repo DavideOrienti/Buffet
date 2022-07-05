@@ -21,6 +21,7 @@
 		<div class="immagine">
       <img th:src="${piatto.immagine}" height="500" width="auto">
       </div>
+		<div class= "blocco-ingredienti ">
 		
 		<div class="testo">
 			<div class=nome>
@@ -52,8 +53,11 @@
 			 -->	
 			 
 			 <div class="lista">
-				<li th:each="ingrediente : ${IngredientiPiatto}"  th:text="|${ingrediente.nome} |">Buffetefefef
+			 Ingredienti :
+				<li th:each="ingrediente : ${IngredientiPiatto}" th:text="|${ingrediente.nome} |">Buffetefefef
 				</li>
+			</div>
+			
 			</div>
 			 
          
@@ -67,19 +71,24 @@
            </div> --> 
            
            
-		<div>
+		<div th:if="${credentials}">
+		<div class="Aggiungi">
             <form  th:action="@{'/remove'+'/' + ${piatto.id}}"
                 method="POST">
-                <button class="sub-button" type="submit">Rimuovi</button>
+                <button class="sub-button" type="submit">
+                <a>Rimuovi
+                </a>
+                </button>
             </form>
         </div>
+        </div>
         
-        <div>
+        <!--  --div>
             <form  th:action="@{'/modifica'+'/' + ${piatto.id}}"
                 method="GET">
                 <button class="sub-button" type="submit">Modifica</button>
             </form>
-        </div>
+        </div-->
 		
 		
 		
