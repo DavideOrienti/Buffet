@@ -88,6 +88,13 @@ public String getBuffet(Model model) {
 	  public String getChef(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("login",AuthenticationController.loggato);
 		model.addAttribute("chef", this.cs.FindById(id));
+		if(AuthenticationController.loggato) {
+	 		if(AuthenticationController.admin) {	
+	 			model.addAttribute("credentials",AuthenticationController.admin);
+	 			
+	 		}}
+
+	       
 	    return "chef.html";
 
 }
@@ -113,15 +120,26 @@ public String getBuffet(Model model) {
     public String modificaChef(Model model,@PathVariable("id") Long id) {
         Chef c= cs.FindById(id);
         model.addAttribute("chef", c);
+        if(AuthenticationController.loggato) {
+     		if(AuthenticationController.admin) {	
+     			model.addAttribute("credentials",AuthenticationController.admin);
+     			
+     		}}
+
+           
         return "ModificaChef.html";
         }
 
 	@PostMapping("/chef/{id}")
     public String modificaChef(@ModelAttribute("chef") Chef chef, Model model,BindingResult bindingResult,
             @PathVariable("id") Long Id) {
-
+	
+	//Chef c = cs.FindById(Id);
      chef.setId(Id);
      cs.salvaChef(chef);
+     //cs.cancellaChef(c);
+   
+     //chef.setId(Id);
      chef=cs.FindById(Id);
      model.addAttribute("chef", chef);
      if(AuthenticationController.loggato) {
@@ -130,7 +148,7 @@ public String getBuffet(Model model) {
  			
  		}}
 
-        return "chefs.html";
+        return "chef.html";
          }
 
 }

@@ -130,6 +130,8 @@ colonna ul {
   color: orangered;
 }
 
+
+
 /*responsive*/
 @media (max-width: 767px) {
   .colonna {

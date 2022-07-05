@@ -36,10 +36,10 @@
 		
 	</div>
 	  
-        <div>
+        <div th:if="${credentials}">
             <form  th:action="@{'/modifica'+'/' + ${chef.id}}"
                 method="GET">
-                <button class="sub-button" type="submit" th:text="#{modifica.chef}"> Modifica</button>
+                <button class="sub-button" type="submit"> <a> Modifica</a></button>
             </form>
         </div>
         <!-- >div>

@@ -58,6 +58,10 @@ public class ChefService {
 	cr.save(chef);
 		
 	}
+	public void cancellaChef(Chef chef) {
+		cr.delete(chef);
+			
+		}
 
 
 
