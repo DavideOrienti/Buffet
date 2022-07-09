@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Buffet {
@@ -26,7 +27,7 @@ public class Buffet {
 	private String descrizione;
 	
 	@ManyToOne (cascade = {CascadeType.PERSIST})
-	
+	@NotNull(message = "{chef.nullo}")
 	private Chef chef;
 	
 	
@@ -36,7 +37,7 @@ public class Buffet {
 	private List<Piatto> piatti;
 	
 	public Buffet() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Buffet(String nome) {

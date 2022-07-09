@@ -31,6 +31,10 @@ public class BuffetValidator implements Validator {
 			 logger.debug("e' un duplicato");
 	            errors.reject("buffet.duplicato");
 	        }
+//		 if(buffetService.ChefNonInserito((Buffet)obj)) {
+//			 logger.debug("Chef non puo essere nullo");
+//	            errors.reject("buffet.chef.nullo");
+//	        }
 		}
 	}
 

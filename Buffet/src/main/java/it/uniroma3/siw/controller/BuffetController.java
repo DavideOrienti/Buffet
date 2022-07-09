@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Piatto;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.BuffetService;
 import it.uniroma3.siw.service.PiattoService;
 import it.uniroma3.siw.validator.BuffetValidator;
@@ -57,6 +61,8 @@ public class BuffetController {
 	//bilding result gestische i casi di errore
 	//model Attriubute associa cio che c edentro al modello con l oggetto persona
 		public String addBuffet(@Valid @ModelAttribute("buffet")Buffet buffet,BindingResult br,Model model) {
+		
+		
 		bv.validate(buffet, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
 		model.addAttribute("loggato",AuthenticationController.loggato);
@@ -64,6 +70,8 @@ public class BuffetController {
 			bs.saveBuffet(buffet);
 			//model.addAttribute("buffet", model);
 			model.addAttribute("buffets", this.bs.FindAll());
+			
+			
 			
 			//model.addAttribute("piatti", this.bs.getPiattoService().FindById(buffet.getId()));
 			
@@ -106,6 +114,7 @@ public class BuffetController {
 		model.addAttribute("buffets", this.bs.FindAll());
 		
 		
+		
 		if(AuthenticationController.loggato) {
 			if(AuthenticationController.admin) {	
 				model.addAttribute("credentials",AuthenticationController.admin);
@@ -125,12 +134,47 @@ public class BuffetController {
 
 }
 	@GetMapping("/buffetForm")
-	public String geBuffet(Model model) {
+	public String addBuffet(Model model) {
+		 if(AuthenticationController.admin) {
 		logger.debug("buffetForm");
 		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs", this.bs.getChefService().FindAll());
 		model.addAttribute("loggato",AuthenticationController.loggato);
-		return "buffetForm.html";
+		return "buffetForm.html";}
+		 else {
+			 return "loginForm";
+		 }
+		
+	}
+	
+//	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+//	public String registerUser(@ModelAttribute("user") User user,BindingResult userBindingResult,
+//			@Valid @ModelAttribute("credentials") Credentials credentials,
+//			BindingResult credentialsBindingResult,
+//			Model model) {
+//	
+//		this.userValidator.validate(user, userBindingResult);
+//		this.credentialsValidator.validate(credentials, credentialsBindingResult);
+//		
+//		if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+//			
+//			credentials.setUser(user);
+//			credentialsService.saveCredentials(credentials);
+//			return "registrationSuccessful";
+//		}
+//		return "registerUser";
+//	}
+	@PostMapping("/buffetForm")
+	public String addBuffet( @ModelAttribute("buffet")Buffet buffet,Model model,BindingResult br) {
+       bv.validate(buffet, br);
+        //model.addAttribute("buffet", new Buffet());
+        model.addAttribute("chefs", this.bs.getChefService().FindAll());
+        model.addAttribute("loggato",AuthenticationController.loggato);
+        if(!br.hasErrors() && buffet.getChef()!=null )	{
+        	bs.saveBuffet(buffet);
+			return "index";
+		}
+		else{return "buffetForm";}
 		
 	}
 	

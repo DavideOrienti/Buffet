@@ -100,24 +100,29 @@ public String getBuffet(Model model) {
 }
 	@GetMapping("/chefForm")
 	public String geChef(Model model) {
+		 if(AuthenticationController.admin) {
 		model.addAttribute("chef", new Chef());
 		model.addAttribute("loggato",AuthenticationController.loggato);
-		return "chefForm.html";
+		return "chefForm.html";}
+		 else {
+			 return "loginForm";
+		 }
 		
 	}
 	
-	@GetMapping("/addChef")
-	public String addChef(Model model) {
-		//logger.debug("addCuratore");
-		model.addAttribute("chef", new Chef());
-		
-		
-		//model.addAttribute("login",AuthenticationController.loggato);
-		return "chefForm.html";
-	}
-	
+//	@GetMapping("/addChef")
+//	public String addChef(Model model) {
+//		//logger.debug("addCuratore");
+//		model.addAttribute("chef", new Chef());
+//		
+//		
+//		//model.addAttribute("login",AuthenticationController.loggato);
+//		return "chefForm.html";
+//	}
+//	
 	@GetMapping("/modifica/{id}")
     public String modificaChef(Model model,@PathVariable("id") Long id) {
+		 if(AuthenticationController.admin) {
         Chef c= cs.FindById(id);
         model.addAttribute("chef", c);
         if(AuthenticationController.loggato) {
@@ -128,7 +133,10 @@ public String getBuffet(Model model) {
 
            
         return "ModificaChef.html";
+        }else {
+        	return "loginForm";
         }
+	}
 
 	@PostMapping("/chef/{id}")
     public String modificaChef(@ModelAttribute("chef") Chef chef, Model model,BindingResult bindingResult,

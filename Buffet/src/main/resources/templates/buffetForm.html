@@ -22,7 +22,7 @@
 			<div class="right">
 				<h2>BuffetForm</h2>
 
-				<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+				<form th:action="@{/buffetForm}" method="POST" th:object="${buffet}">
 
 
 					<div th:if="${#fields.hasGlobalErrors()}">
@@ -46,11 +46,18 @@
 					<div>
 						<select name="chef" roleId="chef" id="chef" th:field="*{chef}"
 							class="field">
-							<option value=" ">Chef</option>
+							
+							<option value="">Chef</option>
+							
 							<option th:each="chef : ${chefs}" th:value="${chef.id}"
-								th:text="${chef.nome}"></option>
+								th:text="${chef.nome}" >
+								
+								</option>
+								
 
 						</select>
+						<p th:if="${#fields.hasErrors('chef')}" th:errors="*{chef}">Name Error</p>
+					
 					</div>
 
 

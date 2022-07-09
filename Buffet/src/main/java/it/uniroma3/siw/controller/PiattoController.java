@@ -81,6 +81,7 @@ public class PiattoController {
 
 @GetMapping("/piatto")
 public String getBuffet(Model model,Piatto piatto) {
+	 if(AuthenticationController.loggato) {
 	model.addAttribute("loggato",AuthenticationController.loggato);
 	model.addAttribute("piatti", this.ps.FindAll());
 	//model.addAttribute("listaIngredienti" ,this.ps.FindAllIngredientiById(id));
@@ -93,6 +94,9 @@ public String getBuffet(Model model,Piatto piatto) {
 		return "piatti.html";
 	
 }
+	 else {
+		 return "loginForm";}
+	 }
 	
 	@GetMapping("/piatto/{id}")
 	  public String getPiatto(@PathVariable("id") Long id, Model model) {
@@ -111,17 +115,19 @@ public String getBuffet(Model model,Piatto piatto) {
 }
 	@GetMapping("/piattoForm")
 	public String gePiatto(Model model) {
+		if(AuthenticationController.admin) {
 		model.addAttribute("loggato",AuthenticationController.loggato);
 		model.addAttribute("piatto", new Piatto());
 		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-		return "piattoForm.html";
-		
+		return "piattoForm.html";}
+		else {return "loginForm";}
 	}
 	
 	@PostMapping("/remove/{id}")
 	
     public String removePiatto(Model model, @PathVariable("id") Long idPiatto) {
-
+		
+		 if(AuthenticationController.admin) {
             Piatto p= ps.piattoPerId(idPiatto);
 
             List<Ingredienti> ingredientiP = new ArrayList<>( p.getIngredienti());
@@ -145,6 +151,9 @@ public String getBuffet(Model model,Piatto piatto) {
             
             return "index.html";
     }
+		 else {
+			 return "loginForm";
+		 }}
 	
 	
 //	@GetMapping("/remove/{id}")

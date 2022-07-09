@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.repository.CredentialsRepository;
 
 @Service
@@ -38,4 +39,15 @@ public class CredentialsService {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
+    
+	public boolean alreadyExist(Credentials credentials) {
+		return credentialsRepository.existsByUsername(credentials.getUsername());
+	}
+	
+	public boolean respectCondictionMinMax(Credentials credentials) {
+		//Credentials credentia = credentialsRepository.findByUsername(credentials.getUsername());
+		//Optional<Credentials> credentia = credentialsRepository.findById(credentials.getId());
+		if(credentials.getUsername().length()<4 || credentials.getUsername().length()>20) {return false;}
+		else {return true;}
+	}
 }

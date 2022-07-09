@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
@@ -19,13 +21,17 @@ public class Credentials {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false, unique = true)
+	//@Column(nullable = false, unique = true)
+//	@Min(3)
+//	@Max(20)
 	private String username;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
+//	@Min(3)
+//	@Max(20)
 	private String password;
 	
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String role;
 	
 	@OneToOne(cascade = CascadeType.ALL)

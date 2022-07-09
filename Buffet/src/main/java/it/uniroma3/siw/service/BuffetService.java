@@ -68,6 +68,16 @@ public class BuffetService {
 	}
 	
 	
+	@Transactional
+	//Creato per verificare l esistenza di un duplicato
+	public boolean ChefNonInserito(Buffet buffet) {
+		Buffet b= br.findByNome(buffet.getNome());
+		if(b.getChef()==null) {
+			return true;
+		}
+		else {return false;}
+	}
+	
 	
 	
 //	public PiattoService getPiattoService() {

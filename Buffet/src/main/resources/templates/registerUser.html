@@ -17,9 +17,15 @@
     	<div class="center">
 		<h1>Register</h1>
 	<form th:action="@{/register}" method="POST">
+	
     <div>
+    
+    
+    
         <div class="txt_field">
             <span>Username</span>
+            
+            
             <span><input type="text" placeholder="username" required
                        th:field="${credentials.username}"/></span>
             <span th:if="${#fields.hasErrors('credentials.username')}"

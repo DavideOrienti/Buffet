@@ -2,6 +2,7 @@ package it.uniroma3.siw.authentication;
 
 
 import static it.uniroma3.siw.model.Credentials.ADMIN_ROLE;
+import static it.uniroma3.siw.model.Credentials.DEFAULT_ROLE;
 
 import javax.sql.DataSource;
 
@@ -48,7 +49,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.GET, "/admin/","/buffetForm","/piattoForm","/chefForm/**","/ingredienteForm/**").hasAnyAuthority(ADMIN_ROLE)
                 .antMatchers(HttpMethod.POST, "/admin/**","/buffets/**","/ingrediente/**","/piatti/**","/buffet/**").hasAnyAuthority(ADMIN_ROLE)
-               // .antMatchers(HttpMethod.GET "/piatti/**", "/piatto/**").hasAnyAuthority(DEFAULT_ROLE)
+                //.antMatchers(HttpMethod.GET, "/buffetForm").hasAnyAuthority(DEFAULT_ROLE)
                 
                 // tutti gli utenti autenticati possono accere alle pagine rimanenti 
                 .anyRequest().authenticated()

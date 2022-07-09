@@ -90,12 +90,16 @@ public String getBuffet(Model model) {
 }
 @GetMapping("ingredienteForm")
 public String getIngredient(Model model) {
+	 if(AuthenticationController.admin) {
 	logger.debug("ingredienteForm");
 	model.addAttribute("ingrediente", new Ingredienti());
 	model.addAttribute("listapiatti", this.ps.FindAll());
 	model.addAttribute("loggato",AuthenticationController.loggato);
 	return "ingredienteForm.html";
-	
+	 }
+	 else {
+		 return "loginForm";
+	 }
 }
 
 
