@@ -42,7 +42,7 @@ public class IngredientiController {
 		public String addIngredienti(@Valid @ModelAttribute("ingrediente")Ingredienti ingredienti,BindingResult br,Model model) {
 		iv.validate(ingredienti, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			is.savePersona(ingredienti);
 			
@@ -54,7 +54,7 @@ public class IngredientiController {
 				}}
 			return "index.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
-		else return "ingredientiForm.html";
+		else return "ingredienteForm.html";
 		
 	}
 
@@ -70,7 +70,7 @@ public class IngredientiController {
 
 @GetMapping("/ingrediente")
 public String getBuffet(Model model) {
-	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("loggato",AuthenticationController.loggato);
 	model.addAttribute("ingredienti", this.is.FindAll());
 	if(AuthenticationController.loggato) {
 		if(AuthenticationController.admin) {	
@@ -83,7 +83,7 @@ public String getBuffet(Model model) {
 
 @GetMapping("/ingrediente/{id}")
   public String getIngrediente(@PathVariable("id") Long id, Model model) {
-	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("loggato",AuthenticationController.loggato);
 	model.addAttribute("ingrediente", this.is.FindById(id));
     return "ingrediente.html";
 
@@ -93,7 +93,7 @@ public String getIngredient(Model model) {
 	logger.debug("ingredienteForm");
 	model.addAttribute("ingrediente", new Ingredienti());
 	model.addAttribute("listapiatti", this.ps.FindAll());
-	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("loggato",AuthenticationController.loggato);
 	return "ingredienteForm.html";
 	
 }

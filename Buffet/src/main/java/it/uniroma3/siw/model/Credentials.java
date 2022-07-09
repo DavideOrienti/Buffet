@@ -13,6 +13,7 @@ public class Credentials {
 	
 	public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
+	public static final String NON_LOGGATO= "NON_LOGGATO";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,7 +36,7 @@ public class Credentials {
 	}
 
 	public Credentials() {
-		// TODO Auto-generated constructor stub
+		this.role=NON_LOGGATO;
 	}
 
 	public Long getId() {

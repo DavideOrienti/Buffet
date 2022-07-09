@@ -22,7 +22,7 @@
 	<header class="font" th:fragment="intestazione">
 		<div class="header">
 			<div class="header_logo">
-				<a th:href="@{/}">Home</a>
+				<a th:href="@{/index}">Home</a>
 				
 			</div>
 			<div class="header_items">
@@ -37,8 +37,8 @@
 					</div>
 
 					<div class="tasto">
-						<a th:href="@{/login}" th:if="!${login}">Accedi</a> <a
-							th:href="@{/logout}" th:if="${login}">Logout</a>
+						<a  th:if="!${loggato}" th:href="@{/login}">Accedi</a> <a
+							 th:if="${loggato}" th:href="@{/logout}">Logout</a>
 
 					</div>
 				</ul>

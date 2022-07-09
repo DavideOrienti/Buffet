@@ -45,10 +45,10 @@ public class ChefController {
 		public String addChef(@Valid @ModelAttribute("chef")Chef chef,BindingResult br,Model model) {
 		cv.validate(chef, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			cs.savePersona(chef);
-			//model.addAttribute("chef", model);
+			//model.addAttribute("chef", model);immobile
 			this.cs.savePersona(chef);
 			model.addAttribute("chefs", this.cs.FindAll());
 			
@@ -72,7 +72,7 @@ public class ChefController {
 //	}
 @GetMapping("/chef")
 public String getBuffet(Model model) {
-	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("loggato",AuthenticationController.loggato);
 	model.addAttribute("chefs", this.cs.FindAll());
 	if(AuthenticationController.loggato) {
 		if(AuthenticationController.admin) {	
@@ -86,7 +86,7 @@ public String getBuffet(Model model) {
 	
 	@GetMapping("/chef/{id}")
 	  public String getChef(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		model.addAttribute("chef", this.cs.FindById(id));
 		if(AuthenticationController.loggato) {
 	 		if(AuthenticationController.admin) {	
@@ -101,7 +101,7 @@ public String getBuffet(Model model) {
 	@GetMapping("/chefForm")
 	public String geChef(Model model) {
 		model.addAttribute("chef", new Chef());
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		return "chefForm.html";
 		
 	}

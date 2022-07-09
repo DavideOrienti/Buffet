@@ -8,22 +8,14 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.siw.model.Buffet;
-import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Ingredienti;
 import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.IngredientiService;
@@ -59,7 +51,7 @@ public class PiattoController {
 		public String addPiatto(@Valid @ModelAttribute("piatto")Piatto piatto,BindingResult br,Model model) {
 		pv.validate(piatto, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			ps.savePiatto(piatto);
 			//model.addAttribute("piatti", model);
@@ -89,7 +81,7 @@ public class PiattoController {
 
 @GetMapping("/piatto")
 public String getBuffet(Model model,Piatto piatto) {
-	model.addAttribute("login",AuthenticationController.loggato);
+	model.addAttribute("loggato",AuthenticationController.loggato);
 	model.addAttribute("piatti", this.ps.FindAll());
 	//model.addAttribute("listaIngredienti" ,this.ps.FindAllIngredientiById(id));
 	//model.addAttribute("listaIngredienti" ,this.ps.FindIngredienti());
@@ -104,7 +96,7 @@ public String getBuffet(Model model,Piatto piatto) {
 	
 	@GetMapping("/piatto/{id}")
 	  public String getPiatto(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 	    model.addAttribute("piatto", this.ps.FindById(id));
 	    model.addAttribute("IngredientiPiatto", this.ps.FindById(id).getIngredienti());
 	   
@@ -119,7 +111,7 @@ public String getBuffet(Model model,Piatto piatto) {
 }
 	@GetMapping("/piattoForm")
 	public String gePiatto(Model model) {
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		model.addAttribute("piatto", new Piatto());
 		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
 		return "piattoForm.html";
@@ -261,7 +253,42 @@ public String getBuffet(Model model,Piatto piatto) {
 //        return "index.html";
 //         }
 //
-
-	
+//	
+//	@GetMapping("/modifica/{id}")
+//    public String modificaPiatto(Model model,@PathVariable("id") Long id) {
+//        Piatto p= ps.FindById(id);
+//        model.addAttribute("piatto", p);
+//        if(AuthenticationController.loggato) {
+//     		if(AuthenticationController.admin) {	
+//     			model.addAttribute("credentials",AuthenticationController.admin);
+//     			
+//     		}}
+//
+//           
+//        return "ModificaPiatto.html";
+//        }
+//	
+//	@PostMapping("/piatto/{id}")
+//    public String modificaPiatto(@ModelAttribute("piatto") Piatto piatto, Model model,BindingResult bindingResult,
+//            @PathVariable("id") Long Id) {
+//	
+//	//Chef c = cs.FindById(Id);
+//     piatto.setId(Id);
+//     ps.savePiatto(piatto);
+//     //cs.cancellaChef(c);
+//   
+//     //chef.setId(Id);
+//     piatto=ps.FindById(Id);
+//     model.addAttribute("piatto", piatto);
+//     if(AuthenticationController.loggato) {
+// 		if(AuthenticationController.admin) {	
+// 			model.addAttribute("credentials",AuthenticationController.admin);
+// 			
+// 		}}
+//
+//        return "piatto.html";
+//         }
+//
+//	
 
 }

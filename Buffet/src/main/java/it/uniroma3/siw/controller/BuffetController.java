@@ -38,16 +38,16 @@ public class BuffetController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
-	@GetMapping("/")
-    public String defaultMapping(Model model)
-    {
-		if(AuthenticationController.loggato) {
-			if(AuthenticationController.admin) {
-				model.addAttribute("credentials",AuthenticationController.admin);
-			}}
-        return "index.html";
-    }	
-	
+//	@GetMapping("/")
+//    public String defaultMapping(Model model)
+//    {
+//		if(AuthenticationController.loggato) {
+//			if(AuthenticationController.admin) {
+//				model.addAttribute("credentials",AuthenticationController.admin);
+//			}}
+//        return "index.html";
+//    }	
+//	
 	
 	//GET per operazioni di lettura
 	//POST per operazioni di scrittura
@@ -59,7 +59,7 @@ public class BuffetController {
 		public String addBuffet(@Valid @ModelAttribute("buffet")Buffet buffet,BindingResult br,Model model) {
 		bv.validate(buffet, br); /* "aggiunge il caso di errore a br quindi nel if oltre a controllare i classici 
 		                              errori contro anche che non ci siano duplicati*/
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		if(!br.hasErrors())	{
 			bs.saveBuffet(buffet);
 			//model.addAttribute("buffet", model);
@@ -102,7 +102,7 @@ public class BuffetController {
 	
 	@GetMapping("/buffet")
 	public String getBuffet(Model model,Buffet buffet) {
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		model.addAttribute("buffets", this.bs.FindAll());
 		
 		
@@ -117,7 +117,7 @@ public class BuffetController {
 	
 	@GetMapping("/buffet/{id}")
 	  public String getBuffet(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		buffetCorrente = this.bs.FindById(id);
 	    model.addAttribute("buffet", this.bs.FindById(id));
 	    model.addAttribute("listapiatti", this.ps.PiattiPerBuffet(buffetCorrente));
@@ -129,7 +129,7 @@ public class BuffetController {
 		logger.debug("buffetForm");
 		model.addAttribute("buffet", new Buffet());
 		model.addAttribute("chefs", this.bs.getChefService().FindAll());
-		model.addAttribute("login",AuthenticationController.loggato);
+		model.addAttribute("loggato",AuthenticationController.loggato);
 		return "buffetForm.html";
 		
 	}

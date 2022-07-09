@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/my-style.css}" rel="stylesheet" />
+<link th:href="@{/css/piattoForm.css}" rel="stylesheet" />
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
+<title>PiattoForm</title>
+</head>
+<body>
+
+<header th:replace="fragments/base.html :: intestazione"></header>
+
+<div class="container">
+		<div class="contact-box">
+			<div class="left"></div>
+			<div class="right">
+				<h2>ModificaPiatto</h2>
+
+<form th:action="@{/piatto}" method="post" th:object="${piatto}">
+
+		<div th:if="${#fields.hasGlobalErrors()}">
+		 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
+		</div>
+
+
+		<div>
+			Nome:<input type="text" class="field" th:field="*{nome}" />
+			<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			
+		</div>
+		
+		<div>
+			Origine:<input type="text" class="field" th:field="*{origine}" />
+			<div th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></div>
+			
+		</div>
+		
+		<div>
+			Descrizione:<input type="text" class="field" th:field="*{descrizione}" />
+			<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+		</div>
+		
+		<div>
+				<select name="buffet"  roleId="buffet" id="buffet"
+				class="field"	th:field="*{buffet}">
+					<option value=" ">Buffet</option>
+					<option th:each="buffet : ${buffets}"
+						th:value="${buffet.id}"
+						th:text="${buffet.nome}"></option>
+
+				</select>
+			</div>
+			
+			
+			<div>
+					Immagine <input type="text" name="immagine" th:field="*{immagine}" required />
+					<span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+				</div>
+		
+		<div>
+			<button type="submit" class="btn"> Conferma </button></div>
+
+	</form>
+			</div>
+		</div>
+	</div>
+	
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</body>
+	</html>
