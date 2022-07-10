@@ -34,6 +34,7 @@ public class AuthenticationController {
 
 	private static Credentials credentials;
 	private static UserDetails userDetails;
+	
 
 
 	@Autowired
@@ -41,6 +42,11 @@ public class AuthenticationController {
 
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+
+
+	
+	
+	
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -76,6 +82,8 @@ public class AuthenticationController {
 		admin=false;
 		return "index";
 	}
+	
+	
 
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
 	public String defaultAfterLogin(Model model ,HttpSession httpSession) {

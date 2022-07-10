@@ -165,19 +165,21 @@ public class BuffetController {
 //		return "registerUser";
 //	}
 	@PostMapping("/buffetForm")
-	public String addBuffet( @ModelAttribute("buffet")Buffet buffet,Model model,BindingResult br) {
+	public String addBuffet(@ModelAttribute("buffet")Buffet buffet,Model model,BindingResult br) {
        bv.validate(buffet, br);
-        //model.addAttribute("buffet", new Buffet());
+       // model.addAttribute("buffet",buffet);
+        
         model.addAttribute("chefs", this.bs.getChefService().FindAll());
         model.addAttribute("loggato",AuthenticationController.loggato);
         if(!br.hasErrors() && buffet.getChef()!=null )	{
         	bs.saveBuffet(buffet);
+        	model.addAttribute("buffet",bs.FindById(buffet.getId()));
 			return "index";
 		}
 		else{return "buffetForm";}
 		
 	}
-	
+//	
 //	@PostMapping("/remove/{id}")
 //	
 //	public String getOepra(@PathVariable("id") Long id, Model model) {

@@ -20,6 +20,7 @@ public class Buffet {
 	private Long id;
 	
 	@NotBlank
+	
     private String nome;
 	
 	//@Column(nullable = false)
