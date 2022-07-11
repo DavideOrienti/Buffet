@@ -135,6 +135,14 @@ public class PiattoService {
 		pr.delete(piatto);
 		
 	}
+	
+	public boolean BuffetNonEsistente(Piatto piatto) {
+		if(piatto.getBuffet()==null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 
 

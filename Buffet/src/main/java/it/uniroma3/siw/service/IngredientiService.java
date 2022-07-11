@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Ingredienti;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.repository.IngredientiRepository;
 
 
@@ -68,6 +69,17 @@ public class IngredientiService {
 //		ir.delete(piatto.getId());
 //		
 //	}
+	
+	
+	
+	public boolean PiattoNonEsistente(Ingredienti ingrediente) {
+		if(ir.findByNome(ingrediente.getNome())==null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 	
 	

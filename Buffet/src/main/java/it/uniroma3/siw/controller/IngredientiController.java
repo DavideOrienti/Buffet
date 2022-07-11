@@ -54,7 +54,10 @@ public class IngredientiController {
 				}}
 			return "index.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
-		else return "ingredienteForm.html";
+		
+		else 
+			model.addAttribute("listapiatti", this.ps.FindAll());
+			return "ingredienteForm.html";
 		
 	}
 

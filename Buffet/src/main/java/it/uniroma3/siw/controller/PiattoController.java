@@ -67,7 +67,10 @@ public class PiattoController {
 				}}
 			return "piatti.html";  // se il problema non ha trovato errori torna alla pagina iniziale
 		}
-		else return "piattoForm.html";
+		
+		else 
+			model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
+			return "piattoForm.html";
 		
 	}
 

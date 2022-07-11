@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.model.Ingredienti;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.IngredientiService;
 
 @Component
@@ -30,6 +31,9 @@ public class IngredientiValidator implements Validator{
 		 if(ingredientiService.alreadyExist((Ingredienti)obj)) {
 	            errors.reject("persona.duplicato");
 	        }
+//		 if(ingredientiService.PiattoNonEsistente((Ingredienti)obj) ) {
+//	            errors.reject("ingrediente.PiattononEsistente");
+//	        }}
 	}}
 
 }

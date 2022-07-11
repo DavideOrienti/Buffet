@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import it.uniroma3.siw.model.Buffet;
+import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.BuffetService;
 
 
@@ -31,11 +32,10 @@ public class BuffetValidator implements Validator {
 			 logger.debug("e' un duplicato");
 	            errors.reject("buffet.duplicato");
 	        }
-//		 if(buffetService.ChefNonInserito((Buffet)obj)) {
-//			 logger.debug("Chef non puo essere nullo");
-//	            errors.reject("buffet.chef.nullo");
-//	        }
+			if(buffetService.ChefNonEsistente((Buffet)obj) ) {
+	            errors.reject("Chef.nonEsistente");
+	        }}
+
 		}
 	}
 
-}

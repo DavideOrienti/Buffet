@@ -11,5 +11,6 @@ public interface IngredientiRepository extends CrudRepository<Ingredienti,Long> 
 
 	public boolean existsByNome(String nome);
 	public List<Piatto> findByPiatti(Ingredienti ingredienti);
+	public Piatto findByNome(String nome);
 	
 }

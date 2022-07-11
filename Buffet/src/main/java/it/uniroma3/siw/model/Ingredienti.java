@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -21,6 +22,7 @@ public class Ingredienti {
 	private String descrizione;
 	
 	@ManyToMany
+	@NotNull
 	private List<Piatto> piatti ;
 	
 	public Ingredienti() {
