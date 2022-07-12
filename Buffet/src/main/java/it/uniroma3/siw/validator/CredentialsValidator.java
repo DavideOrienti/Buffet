@@ -63,6 +63,7 @@ public class CredentialsValidator implements Validator {
 		 if(!credentialsService.respectCondictionMinMax((Credentials)obj)){
 			 errors.reject("credentials.MinMax");
 		 }
+		 
 		}
 	}
 

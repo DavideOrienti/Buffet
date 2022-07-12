@@ -1,0 +1,35 @@
+body{
+	background-color: #ff8080;
+
+	
+}
+
+.testo h5{
+	text-align: center;
+	text-decoration:inherit;
+	font-size:50px;
+	justify-content: center;
+	align-items: center;
+	
+	
+}
+.continua{
+	text-align:center;
+	justify-content: center;
+	align-content:center;
+	align-items:center;
+	margin:100px;
+	
+}
+
+#pulsante {
+outline: none;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+font: bold 12px Arial, Helvetica, sans-serif;
+color: black;
+padding: 15px 30px;
+border: solid 1px #000000;
+background: #ff8040;
+}

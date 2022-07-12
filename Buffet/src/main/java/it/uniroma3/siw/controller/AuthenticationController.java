@@ -146,6 +146,8 @@ public String registerUser(@ModelAttribute("user") User user,BindingResult userB
 		credentialsService.saveCredentials(credentials);
 		return "registrationSuccessful";
 	}
+	
+	
 	return "registerUser";
 }
 
