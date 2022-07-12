@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.PiattoService;
 
@@ -35,5 +34,5 @@ public class PiattoValidator implements Validator{
 		if(piattoService.BuffetNonEsistente((Piatto)obj) ) {
             errors.reject("piatto.nonEsistente");
         }}
-	
-}
+	}
+

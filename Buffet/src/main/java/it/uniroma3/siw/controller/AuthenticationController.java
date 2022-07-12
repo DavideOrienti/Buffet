@@ -30,6 +30,8 @@ public class AuthenticationController {
 
 	public static boolean loggato=false;
 	public static boolean admin=false;
+	public static boolean staLoggando=false;
+	
 
 
 	private static Credentials credentials;
@@ -57,10 +59,7 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
-//		if(userDetails!=null && loggato == false) {
-//			userDetails=null;
-//		}
-//			
+		staLoggando=true;
 		return "loginForm";
 	}
 //	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -74,12 +73,20 @@ public class AuthenticationController {
 //		}
 //		else {return "registerForm";}
 //	}
-	
+	@RequestMapping(value = "/loginConferma", method = RequestMethod.GET) 
+	public String loginConferma(Model model) {
+		if(staLoggando) {
+		loggato=true;
+		return "loginSuccesso";
+		}
+		
+		return "loginForm";
+		
+	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
-		loggato =false;
-		admin=false;
+		loggato=false;
 		return "index";
 	}
 	
@@ -87,9 +94,10 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/default", method = RequestMethod.GET)
 	public String defaultAfterLogin(Model model ,HttpSession httpSession) {
+		staLoggando=false;
 		
 		//caso positivo devo creare tutto se sono tutti e due a null voglio effettuare l'accesso
-		if(userDetails==null && loggato ==false) {
+		if(userDetails==null && loggato ==true) {
 			userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			credentials = credentialsService.getCredentials(userDetails.getUsername());
 			model.addAttribute("loggato",true);
