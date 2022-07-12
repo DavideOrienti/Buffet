@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Esito registrazione')"> 
-
 
 <link th:href="@{/css/my-style.css}" rel="stylesheet" />
-<link th:href="@{/css/logoutConferma.css}" rel="stylesheet" />
+<link th:href="@{/css/loginConferma.css}" rel="stylesheet" />
 <link
       rel="stylesheet"
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
-</head>
-<body>
-	
+
+ <link href="https://fonts.googleapis.com/css2?family=Chonburi&display=swap" rel="stylesheet">
+ <title>loginConferma</title>
+	<body>
 	<div class="testo">
     	
-		<h2>login effettuato con successo </h2>
+		<h5>login effettuato con successo </h5>
 	</div>
 	
-  <div>
-        <div class="Aggiungi">
-		  <h5>
-            <a href="/default">continua a navigare </a>
-            </h5>
+        <div class="continua">
+           <!--button href="default" id="pulsante">Continua a navigare</button-->
+            <a id="pulsante" href="default">Continua a navigare</a>
             </div>
 
-           </div>
 	
 	<div class="spazio">
 	</div>
