@@ -32,8 +32,8 @@ public class PiattoValidator implements Validator{
 	            errors.reject("piatto.duplicato");
 	        }}
 		
-//		if(piattoService.BuffetNonEsistente((Piatto)obj) ) {
-//            errors.reject("piatto.nonEsistente");
-//        }}
-	}
+		if(piattoService.BuffetNonEsistente((Piatto)obj) ) {
+            errors.reject("piatto.nonEsistente");
+        }}
+	
 }

@@ -29,7 +29,7 @@ public class IngredientiValidator implements Validator{
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 		 if(ingredientiService.alreadyExist((Ingredienti)obj)) {
-	            errors.reject("persona.duplicato");
+	            errors.reject("ingrediente.duplicato");
 	        }
 //		 if(ingredientiService.PiattoNonEsistente((Ingredienti)obj) ) {
 //	            errors.reject("ingrediente.PiattononEsistente");
