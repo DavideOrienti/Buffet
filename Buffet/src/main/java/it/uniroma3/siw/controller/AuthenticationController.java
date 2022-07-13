@@ -87,6 +87,7 @@ public class AuthenticationController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
 		loggato=false;
+		admin=false;
 		return "index";
 	}
 	
