@@ -78,6 +78,7 @@ public class AuthenticationController {
 	public String logout(Model model) {
 		loggato=false;
 		admin=false;
+		userDetails=null;
 		return "index";
 	}
 	
@@ -99,22 +100,34 @@ public class AuthenticationController {
 			//ho effettuato l'accesso ora
 			loggato =true;
 		}
+//		if( loggato ==true) {
+//			userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//			credentials = credentialsService.getCredentials(userDetails.getUsername());
+//			model.addAttribute("loggato",true);
+//			httpSession.setAttribute("user",credentials.getUser());
+//			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+//				admin=true;
+//			}
+//			//ho effettuato l'accesso ora
+//			loggato =true;
+//		}
+		
 		// secondo caso , clicko su default senza aver effettuato l'accesso
 		else if(userDetails!= null && loggato ==false) {
 			model.addAttribute("loggato",false);
 			userDetails=null;
 			return"index";
 		}
-		//caso impossibile
-		else if(userDetails== null && loggato ==true) {
-			model.addAttribute("loggato",false);
-			return"index";
-		}
-		//caso impossibile
-		else if(userDetails!= null && loggato ==true) {
-			model.addAttribute("loggato",true);
-			return"index";
-		}
+//		//caso impossibile
+//		else if(userDetails== null && loggato ==true) {
+//			model.addAttribute("loggato",false);
+//			return"index";
+//		}
+//		//caso impossibile
+//		else if(userDetails!= null && loggato ==true) {
+//			model.addAttribute("loggato",true);
+//			return"index";
+//		}
 		return"index";
 	}
 

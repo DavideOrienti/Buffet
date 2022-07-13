@@ -19,7 +19,7 @@
 		
 	
 		<div class="immagine">
-      <img th:src="${piatto.immagine}" height="500" width="auto">
+      <img th:src="${piatto.immagine}" height="300" width="auto">
       </div>
 		<div class= "blocco-ingredienti ">
 		
@@ -58,26 +58,13 @@
 				</li>
 			</div>
 			
-				<div th:if="${credentials}">
-		<form th:action="@{'/modifica'+'/' + ${chef.id}}" method="GET">
-			<button class="sub-button" type="submit">
-				<h1>MODIFICA</h1>
-			</button>
-		</form>
-	</div>
-	
 			
 			</div>
 			 
          
   
       
-       <!--     <div th:if="${credentials}">  
-    <div class="Rimuovi">
-		 <a th:href="@{'/remove'+'/'+${piatto.id}}" method="POST">Rimuovi opera</a>
-            </div> 
-
-           </div> --> 
+   
            
            
 		<div th:if="${credentials}">
@@ -92,12 +79,7 @@
         </div>
         </div>
         
-        <!--  --div>
-            <form  th:action="@{'/modifica'+'/' + ${piatto.id}}"
-                method="GET">
-                <button class="sub-button" type="submit">Modifica</button>
-            </form>
-        </div-->
+      
 		
 		
 		
