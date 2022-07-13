@@ -87,27 +87,7 @@ public class BuffetController {
 	     return "buffetForm.html";
 		
 	}
-	
-//	//@RequestMapping(value="/addBuffet", method = RequestMethod.GET)
-//	@GetMapping("/addBuffet")
-//	public String addFilm(Model model) {
-//		//logger.debug("addArtista");
-//		model.addAttribute("buffet", new Buffet());
-//		//
-//		//model.addAttribute("login",AuthenticationController.loggato);
-//		return "artistaForm.html";
-//	}
-//	
-	
-	//richiede tute le persone perche non specifico id
-//	@GetMapping("/buffet")
-//	public String getBuffet(Model model) {
-//		List<Buffet> buffet = bs.FindAll();
-//		model.addAttribute("buffet",buffet);
-//		return "buffets.html";
-//		
-//		
-//	}
+
 	
 	@GetMapping("/buffet")
 	public String getBuffet(Model model,Buffet buffet) {

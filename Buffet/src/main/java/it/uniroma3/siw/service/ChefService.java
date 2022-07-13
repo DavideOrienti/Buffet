@@ -44,10 +44,7 @@ public class ChefService {
 		return chef;
 	}
 	
-//	@Transactional
-//	public List<Chef> FindAll() {
-//		return (List<Chef>) cr.findAll();
-//	}
+
 	
 	//Creato per verificare l esistenza di un duplicato
 	public boolean alreadyExist(Chef chef) {

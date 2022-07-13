@@ -37,12 +37,7 @@ public class PiattoController {
 	
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	//quando non mi arriva nulla oppure caso base vado in index pagina iniziale
-//	@GetMapping("/")
-//    public String defaultMapping(Model model)
-//    {
-//        return "index.html";
-//    }
+
 	
 @PostMapping("/piatto")
 	
@@ -74,13 +69,7 @@ public class PiattoController {
 		
 	}
 
-////richiede tute le persone perche non specifico id
-//	@GetMapping("/piatto")
-//	public String getPiatto(Model model) {
-//		List<Piatto> piatto = ps.FindAll();
-//		model.addAttribute("piatto",piatto);
-//		return "piatti.html";
-//	}
+
 
 @GetMapping("/piatto")
 public String getBuffet(Model model,Piatto piatto) {
@@ -159,148 +148,6 @@ public String getBuffet(Model model,Piatto piatto) {
 		 }}
 	
 	
-//	@GetMapping("/remove/{id}")
-//	public String removePiatto(@PathVariable("id") Long id, Model model) {
-//		model.addAttribute("login",AuthenticationController.loggato);
-//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//		
-//		ps.rimuovi(this.ps.FindById(id));
-//	
-//		if(AuthenticationController.admin) {	
-//			model.addAttribute("credentials",AuthenticationController.admin);
-//			//model.addAttribute("credentials",credentials.getRole());
-//		}
-//		return "index.html";
-//	}
-	
 
-
-	
-//	@GetMapping("/modifica/{id}")
-//	
-//	public String ModificaPiatto(@PathVariable("id") Long id, Model model) {
-//		model.addAttribute("login",AuthenticationController.loggato);
-//		model.addAttribute("piatto", this.ps.FindById(id));
-//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//		if(AuthenticationController.admin) {	
-//			model.addAttribute("credentials",AuthenticationController.admin);
-//			//model.addAttribute("credentials",credentials.getRole());
-//		}
-//		return "piattoForm.html";
-//	}
-//	@PostMapping("/modifica/{id}")
-//	
-//	public String newCollezione( Model model,@ModelAttribute("piatto")Piatto piatto, BindingResult bindingResult) {
-//		this.pv.validate(piatto, bindingResult);
-//		//model.addAttribute("login",AuthenticationController.loggato);
-//		if (!bindingResult.hasErrors()) {
-//			Piatto piattoCorrente=this.ps.FindById(piatto.getId());  //<-----------
-//			
-//		piattoCorrente.setDescrizione(piattoCorrente.getDescrizione());
-//		piattoCorrente.setIngredienti(piattoCorrente.getIngredienti());
-//		piattoCorrente.setNome(piattoCorrente.getNome());
-//		
-//		
-//			
-//			
-//			return "index.html";
-//			//}
-//		}
-//		
-//		return "piattoForm.html";
-//	}
-
-//	@GetMapping("/modifica/{id}")
-//    public String modificaConcerto(Model model,@PathVariable("id") Long id) {
-//        Piatto p= ps.FindById(id);
-//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//        model.addAttribute("piatto", p);
-//        
-//        return "piattoForm.html";
-//    }
-//
-//	@PostMapping("/modifica/{id}")
-//  public String modificaPiatto(Model model,@PathVariable("id") Long id,@RequestBody Piatto piatto) {
-//	Piatto p=ps.update(piatto,id);
-//		model.addAttribute("piatto",p);
-//		model.addAttribute("piatti", this.ps.FindAll());
-//		model.addAttribute("buffet", p.getBuffet());
-//		model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//		model.addAttribute("IngredientiPiatto", this.ps.FindById(id).getIngredienti());
-//		 if(AuthenticationController.admin) {	
-//				model.addAttribute("credentials",AuthenticationController.admin);
-//				//model.addAttribute("credentials",credentials.getRole());
-//			}
-//      
-//      return "piattoForm.html";
-//  }
-//	
-//	@GetMapping("/modifica/{id}")
-//    public String modificaPiatto(Model model,@PathVariable("id") Long id) {
-//        Piatto p= ps.FindById(id);
-//        model.addAttribute("piatto", p);
-//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//        return "piattoForm.html";
-//    }
-//
-//	@PostMapping("/modifica/{id}")
-//    public String modificaPiatto(@ModelAttribute("piatto") Piatto piatto, Model model,BindingResult bindingResult, @PathVariable("id") Long Id) {
-//       
-//        piatto.setBuffet(ps.piattoPerId(Id).getBuffet());
-//        piatto.setDescrizione(ps.FindById(Id).getDescrizione());
-//        piatto.setImmagine(ps.FindById(Id).getImmagine());
-//        piatto.setIngredienti(ps.FindById(Id).getIngredienti());
-//        piatto.setNome(ps.FindById(Id).getNome());
-//        piatto.setOrigine(ps.FindById(Id).getOrigine());
-////        piatto.setId(Id);
-//        ps.savePiatto(piatto);
-//       
-//        
-//        if(AuthenticationController.admin) {	
-//			model.addAttribute("credentials",AuthenticationController.admin);}
-//        
-//       // model.addAttribute("buffet" ps.FindById(Id).getBuffet());
-//        model.addAttribute("buffets", this.ps.getBuffetService().FindAll());
-//
-//        return "index.html";
-//         }
-//
-//	
-//	@GetMapping("/modifica/{id}")
-//    public String modificaPiatto(Model model,@PathVariable("id") Long id) {
-//        Piatto p= ps.FindById(id);
-//        model.addAttribute("piatto", p);
-//        if(AuthenticationController.loggato) {
-//     		if(AuthenticationController.admin) {	
-//     			model.addAttribute("credentials",AuthenticationController.admin);
-//     			
-//     		}}
-//
-//           
-//        return "ModificaPiatto.html";
-//        }
-//	
-//	@PostMapping("/piatto/{id}")
-//    public String modificaPiatto(@ModelAttribute("piatto") Piatto piatto, Model model,BindingResult bindingResult,
-//            @PathVariable("id") Long Id) {
-//	
-//	//Chef c = cs.FindById(Id);
-//     piatto.setId(Id);
-//     ps.savePiatto(piatto);
-//     //cs.cancellaChef(c);
-//   
-//     //chef.setId(Id);
-//     piatto=ps.FindById(Id);
-//     model.addAttribute("piatto", piatto);
-//     if(AuthenticationController.loggato) {
-// 		if(AuthenticationController.admin) {	
-// 			model.addAttribute("credentials",AuthenticationController.admin);
-// 			
-// 		}}
-//
-//        return "piatto.html";
-//         }
-//
-//	
 
 }

@@ -63,13 +63,7 @@ public class ChefController {
 		
 	}
 
-//richiede tute le persone perche non specifico id
-//	@GetMapping("/chef")
-//	public String getChef(Model model) {
-//		List<Chef> chef = cs.FindAll();
-//		model.addAttribute("chef",chef);
-//		return "chefs.html";	
-//	}
+
 @GetMapping("/chef")
 public String getBuffet(Model model) {
 	model.addAttribute("loggato",AuthenticationController.loggato);

@@ -62,17 +62,7 @@ public class AuthenticationController {
 		staLoggando=true;
 		return "loginForm";
 	}
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	public String LoginForm(@Valid @ModelAttribute("credentials")Credentials credentials,BindingResult br,Model model) {
-//		if(!br.hasErrors())	{
-//			if(AuthenticationController.loggato) {
-//				if(AuthenticationController.admin) {
-//					model.addAttribute("credentials",AuthenticationController.admin);
-//				}}
-//			return "index";
-//		}
-//		else {return "registerForm";}
-//	}
+
 	@RequestMapping(value = "/loginConferma", method = RequestMethod.GET) 
 	public String loginConferma(Model model) {
 		if(staLoggando) {
@@ -155,7 +145,7 @@ public String registerUser(@ModelAttribute("user") User user,BindingResult userB
 @RequestMapping(value = {"index","/"}, method = RequestMethod.GET)
 public String index(Model model) {
     model.addAttribute("loggato",AuthenticationController.loggato);
-//    model.addAttribute("loggato",AuthenticationController.admin);
+
         return "index";
 }
 

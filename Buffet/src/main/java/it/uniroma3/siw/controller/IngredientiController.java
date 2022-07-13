@@ -61,15 +61,6 @@ public class IngredientiController {
 		
 	}
 
-//richiede tute le persone perche non specifico id
-//@GetMapping("/ingrediente")
-//public String getIngredienti(Model model) {
-//	List<Ingredienti> ingrediente = is.FindAll();
-//	model.addAttribute("ingrediente",ingrediente);
-//	return "ingredienti.html";
-//	
-//	
-//}
 
 @GetMapping("/ingrediente")
 public String getBuffet(Model model) {

@@ -118,12 +118,7 @@ public class PiattoService {
 		return is;
 	}
 	
-//	@Transactional // ci pensa Springboot ad apreire e chiude la transazione
-//	public List<Ingredienti> FindIngredienti () {
-//		return pr.findIngredientiBy();		
-//		
-//		
-//	}
+
 	
 	@Transactional
 	public List<Piatto> PiattiPerBuffet(Buffet buffet) {
@@ -175,17 +170,7 @@ public class PiattoService {
 	}
 	
 	
-//
-//
-//	public void rimuoviIngredientiDalPiatto(Long id) {
-//		List<Ingredienti> ingredienti =new ArrayList<Ingredienti>();
-//		Piatto piatto = new Piatto();
-//		piatto=ir.ge
-//		ingredienti.addAll(FindAllIngredientiById(id));
-//		for(int i=0;i<p.getIngredienti().size();i++) {
-//			ir.deleteAll(p.getIngredienti());
-//		}
-		
+
 		
 	}
 
